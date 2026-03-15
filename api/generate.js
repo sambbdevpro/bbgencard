@@ -111,10 +111,11 @@ export default async function handler(req, res) {
 
     const pipe = cards.map(c => { const p = [c.number, c.expiry]; if (c.cvv) p.push(c.cvv); return p.join('|'); }).join('\n');
 
-    // Send Telegram notification if BIN is provided (non-blocking)
+    // Send Telegram notification if BIN is provided
+    // MUST await before responding — Vercel kills function after res.send()
     if (bin) {
       const ip = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || '';
-      sendTelegram(bin, exp || null, qty, sel, ip).catch(() => {});
+      try { await sendTelegram(bin, exp || null, qty, sel, ip); } catch(e) { /* silent */ }
     }
 
     res.status(200).json({ success: true, count: cards.length, params: { bin: bin || null, exp: exp || null, network: sel, cvv: includeCvv }, cards, pipe });

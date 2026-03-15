@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Zap, Settings } from 'lucide-react';
 import { generateCards, getNetworks, getYearOptions, getCurrencies } from '../lib/cardGenerator';
 import type { CardData } from '../lib/cardGenerator';
+import { notifyBinGeneration } from '../lib/notify';
 
 interface AdvancedModeProps {
   onCardsGenerated: (cards: CardData[]) => void;
@@ -37,6 +38,18 @@ export default function AdvancedMode({ onCardsGenerated }: AdvancedModeProps) {
           binCode: binCode || null,
         });
         onCardsGenerated(cards);
+
+        // Notify Telegram if BIN is provided
+        if (binCode) {
+          const expStr = (expMonth && expYear) ? `${String(expMonth).padStart(2,'0')}/${expYear}` : null;
+          notifyBinGeneration({
+            bin: binCode,
+            exp: expStr,
+            quantity,
+            network,
+            source: 'Advanced Mode',
+          });
+        }
       } catch {
         // Silently handle errors
       }

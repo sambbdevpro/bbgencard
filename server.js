@@ -345,6 +345,34 @@ app.get('/api/networks', (req, res) => {
   res.json({ success: true, networks });
 });
 
+// POST /api/notify - Frontend calls this after client-side generation with BIN
+app.post('/api/notify', async (req, res) => {
+  try {
+    const { bin, exp, quantity, network, source } = req.body || {};
+    if (!bin) return res.status(400).json({ error: 'Missing bin' });
+
+    const ip = req.ip || req.headers['x-forwarded-for'] || req.connection?.remoteAddress || 'unknown';
+    const userAgent = req.headers['user-agent'] || '';
+
+    await sendTelegramNotification({
+      bin, exp: exp || null, quantity: quantity || 0,
+      network: network || 'unknown', ip, userAgent,
+    });
+
+    // Also log it
+    generationLogs.push({
+      bin, exp: exp || null, network: network || 'unknown',
+      quantity: quantity || 0, ip, userAgent,
+      source: source || 'Web UI',
+      timestamp: new Date().toISOString(),
+    });
+
+    res.json({ success: true, notified: true });
+  } catch (error) {
+    res.json({ success: false, error: error.message });
+  }
+});
+
 // GET /api/logs - View generation logs (admin)
 app.get('/api/logs', (req, res) => {
   res.json({
