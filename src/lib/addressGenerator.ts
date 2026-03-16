@@ -1,347 +1,451 @@
-// Address Generator - Data sourced from faker-ruby/faker
-// https://github.com/faker-ruby/faker
-
-// ============== DATA ==============
-
-const MALE_FIRST_NAMES = [
-  'Aaron','Abdul','Abe','Abel','Abraham','Adam','Adrian','Ahmad','Ahmed','Al','Alan','Albert',
-  'Alberto','Alec','Alejandro','Alex','Alexander','Alexis','Alfonso','Alfred','Alfredo','Ali',
-  'Allan','Allen','Alonso','Alonzo','Alvaro','Alvin','Ambrose','Amos','Anderson','Andre','Andres',
-  'Andrew','Andy','Angel','Angelo','Anthony','Antoine','Anton','Antonio','Antony','Archie',
-  'Ariel','Armando','Arnold','Arthur','Arturo','Ashley','Aubrey','August','Augustine','Austin',
-  'Avery','Barry','Ben','Benedict','Benjamin','Bennett','Benny','Bernard','Bill','Billy','Blake',
-  'Bob','Bobby','Boris','Boyd','Brad','Bradford','Bradley','Brady','Brandon','Brent','Brett',
-  'Brian','Brice','Brock','Bruce','Bruno','Bryan','Bryant','Bryce','Byron','Caleb','Calvin',
-  'Cameron','Carl','Carlos','Carlton','Carmen','Carroll','Carson','Carter','Casey','Cecil','Cesar',
-  'Chad','Charles','Charlie','Chase','Chester','Chris','Christian','Christopher','Chuck','Clarence',
-  'Clark','Claude','Clay','Clayton','Clement','Cleveland','Cliff','Clifford','Clifton','Clint',
-  'Clinton','Clyde','Cody','Cole','Colin','Collin','Colton','Conrad','Corey','Cornelius','Cory',
-  'Craig','Curtis','Cyrus','Dale','Dallas','Dalton','Damian','Damon','Dan','Dana','Daniel',
-  'Danny','Dante','Darin','Darius','Darnell','Darrell','Darren','Darrick','Darryl','Darwin',
-  'Dave','David','Davis','Dean','Deandre','Del','Delbert','Demetrius','Dennis','Denver','Derek',
-  'Derrick','Desmond','Devin','Devon','Dewey','Dexter','Diego','Dillon','Dino','Dirk','Domingo',
-  'Dominic','Dominick','Dominique','Don','Donald','Donnell','Donnie','Donovan','Dorian','Doug',
-  'Douglas','Drew','Duane','Dudley','Duncan','Dustin','Dwight','Dylan','Earl','Ed','Eddie',
-  'Edgar','Edison','Edmund','Eduardo','Edward','Edwin','Eli','Elias','Elijah','Elliot','Elliott',
-  'Ellis','Elmer','Elton','Elvis','Emanuel','Emerson','Emil','Emilio','Emmanuel','Emmett',
-  'Enrique','Eric','Erich','Erick','Erik','Ernest','Ernesto','Ervin','Ethan','Eugene','Evan',
-  'Everett','Ezekiel','Ezra','Fabian','Federico','Felipe','Felix','Fernando','Fidel','Fletcher',
-  'Floyd','Forest','Francis','Francisco','Frank','Frankie','Franklin','Fred','Freddie','Freddy',
-  'Frederick','Fredrick','Gabriel','Gale','Garland','Garrett','Garry','Gary','Gavin','Gene',
-  'Geoffrey','George','Gerald','Gerard','Gerardo','German','Gilbert','Glen','Glenn','Gordon',
-  'Graham','Grant','Greg','Gregg','Gregory','Guadalupe','Guillermo','Gus','Gustavo','Guy',
-  'Hal','Hank','Hans','Harold','Harrison','Harry','Harvey','Hayden','Heath','Hector','Henry',
-  'Herbert','Herman','Hershel','Homer','Horace','Howard','Hubert','Hugh','Hugo','Hunter',
-  'Ian','Ignacio','Ira','Irving','Isaac','Isaiah','Ismael','Israel','Ivan','Jack','Jackie',
-  'Jackson','Jacob','Jacques','Jaime','Jake','Jamal','James','Jamie','Jan','Jared','Jarrett',
-  'Jarrod','Jarvis','Jason','Jasper','Javier','Jay','Jean','Jeff','Jefferson','Jeffery','Jeffrey',
-  'Jerald','Jeremiah','Jeremy','Jermaine','Jerome','Jerry','Jesse','Jessie','Jesus','Jim','Jimmie',
-  'Jimmy','Joaquin','Joe','Joel','Joey','John','Johnathan','Johnnie','Johnny','Jon','Jonah',
-  'Jonas','Jonathan','Jonathon','Jordan','Jorge','Jose','Joseph','Josh','Joshua','Juan','Jude',
-  'Julian','Julio','Julius','Junior','Justin','Kareem','Karl','Keith','Kelly','Kelvin','Ken',
-  'Kendall','Kenneth','Kenny','Kent','Kerry','Kevin','Kim','King','Kirk','Kris','Kurt','Kyle',
-  'Lamar','Lance','Lane','Larry','Laurence','Lawrence','Lee','Leland','Leo','Leon','Leonard',
-  'Leonardo','Leopoldo','Leroy','Leslie','Lester','Levi','Lewis','Lincoln','Lionel','Lloyd',
-  'Logan','Lon','Lonnie','Lorenzo','Lou','Louie','Louis','Lowell','Lucas','Luciano','Luis','Luke',
-  'Luther','Lyle','Lyndon','Mac','Malcolm','Malik','Manuel','Marc','Marcel','Marcelo','Marco',
-  'Marcos','Marcus','Mario','Marion','Mark','Markus','Marlin','Marlon','Marshall','Martin',
-  'Marty','Marvin','Mason','Matt','Matthew','Maurice','Max','Maximiliano','Maxwell','Melvin',
-  'Merle','Michael','Micheal','Miguel','Mike','Miles','Milton','Mitchell','Mohamed','Monte',
-  'Morgan','Morris','Moses','Myron','Nathan','Nathaniel','Neal','Neil','Nelson','Nestor',
-  'Nicholas','Nick','Nicolas','Noah','Noel','Nolan','Norman','Oliver','Omar','Orlando','Oscar',
-  'Osvaldo','Otto','Owen','Pablo','Parker','Pat','Patrick','Paul','Pedro','Percy','Perry','Pete',
-  'Peter','Phil','Philip','Phillip','Pierre','Preston','Quentin','Rafael','Ralph','Ramiro',
-  'Ramon','Randall','Randolph','Randy','Raphael','Raul','Ray','Raymond','Reginald','Rene',
-  'Rex','Ricardo','Richard','Rick','Rickey','Ricky','Riley','Rob','Robbie','Robert','Roberto',
-  'Robin','Rod','Roderick','Rodney','Rodolfo','Rodrigo','Roger','Roland','Rolando','Roman',
-  'Romeo','Ron','Ronald','Ronnie','Roosevelt','Rory','Ross','Roy','Ruben','Rudolph','Rudy',
-  'Rufus','Russel','Russell','Ryan','Salvador','Salvatore','Sam','Sammy','Samuel','Sandy',
-  'Santiago','Santos','Scott','Sean','Sergio','Seth','Shane','Shannon','Shaun','Shawn','Sheldon',
-  'Sherman','Sidney','Simon','Sol','Solomon','Spencer','Stacey','Stanley','Stefan','Stephen',
-  'Sterling','Steve','Steven','Stewart','Stuart','Sylvester','Taylor','Ted','Teodoro','Terence',
-  'Terry','Theodore','Thomas','Tim','Timmy','Timothy','Tobias','Todd','Tom','Tomas','Tommy',
-  'Tony','Tracy','Travis','Trevor','Trey','Troy','Tyler','Tyrone','Ulysses','Van','Vance',
-  'Vernon','Victor','Vince','Vincent','Virgil','Wade','Wallace','Walter','Ward','Warren','Wayne',
-  'Wendell','Wesley','Weston','Whitney','Wilbert','Wilbur','Wilfredo','Will','Willard','William',
-  'Willie','Willis','Wilson','Winston','Woodrow','Xavier','Zachary','Zane',
-];
-
-const FEMALE_FIRST_NAMES = [
-  'Abigail','Ada','Addie','Adelaide','Adele','Adeline','Adriana','Adrienne','Agnes','Aileen',
-  'Aimee','Aisha','Alana','Alberta','Alexa','Alexandra','Alexis','Alice','Alicia','Alina',
-  'Alisa','Alison','Allison','Alma','Alyssa','Amanda','Amber','Amelia','Amy','Ana','Anastasia',
-  'Andrea','Angela','Angelica','Angelina','Angie','Anita','Ann','Anna','Annabelle','Anne',
-  'Annette','Annie','April','Ariana','Ariel','Arlene','Ashlee','Ashley','Audrey','Aurora',
-  'Autumn','Ava','Barbara','Beatrice','Becky','Belinda','Bernadette','Bernice','Bertha','Beth',
-  'Bethany','Betty','Beverly','Bianca','Billie','Blair','Blanche','Bobbie','Bonnie','Brandi',
-  'Brandy','Brenda','Bridget','Brittany','Brooke','Caitlin','Callie','Camille','Candace','Cara',
-  'Carina','Carla','Carmen','Carol','Caroline','Carolyn','Carrie','Casey','Cassandra','Catherine',
-  'Cathy','Cecelia','Cecilia','Celeste','Celia','Charlene','Charlotte','Chelsea','Cheri','Cheryl',
-  'Chloe','Christie','Christina','Christine','Christy','Cindy','Claire','Clara','Claudia',
-  'Colleen','Connie','Constance','Cora','Corinne','Courtney','Crystal','Cynthia','Daisy','Dana',
-  'Danielle','Daphne','Darlene','Dawn','Deanna','Debbie','Deborah','Debra','Delia','Denise',
-  'Desiree','Diana','Diane','Dianne','Dolores','Donna','Dora','Doreen','Doris','Dorothy',
-  'Edith','Edna','Eileen','Elaine','Eleanor','Elena','Elizabeth','Ella','Ellen','Eloise','Elsie',
-  'Emily','Emma','Erica','Erin','Ernestine','Esmeralda','Estelle','Esther','Ethel','Eva',
-  'Evelyn','Faith','Faye','Felicia','Flora','Florence','Frances','Francesca','Gabriela',
-  'Gabriella','Gail','Geneva','Genevieve','Georgia','Geraldine','Gina','Ginger','Gladys',
-  'Glenda','Gloria','Grace','Gretchen','Gwendolyn','Haley','Hannah','Harriet','Hattie','Hazel',
-  'Heather','Heidi','Helen','Helena','Henrietta','Hilary','Hilda','Holly','Hope','Ida','Ilene',
-  'Imogene','Inez','Ingrid','Irene','Iris','Irma','Isabel','Isabella','Ivy','Jackie','Jacqueline',
-  'Jade','Jaime','Jamie','Jan','Jana','Jane','Janet','Janice','Jasmine','Jean','Jeanette',
-  'Jeanne','Jenna','Jennifer','Jenny','Jessica','Jessie','Jewel','Jill','Jillian','Jo','Joan',
-  'Joann','Joanna','Joanne','Jocelyn','Jodi','Jodie','Johanna','Josefina','Josephine','Joy',
-  'Joyce','Juanita','Judith','Judy','Julia','Juliana','Julie','June','Karen','Karina','Karla',
-  'Kate','Katherine','Kathleen','Kathryn','Kathy','Katie','Katrina','Kay','Kayla','Kelley',
-  'Kelli','Kelly','Kelsey','Kendra','Kerry','Kim','Kimberly','Kirsten','Krista','Kristen',
-  'Kristin','Kristina','Kristine','Kristy','Krystal','Lacey','Lana','Latasha','Latoya','Laura',
-  'Lauren','Laurie','Laverne','Leah','Leigh','Lena','Leona','Leslie','Leticia','Lillian','Lillie',
-  'Lily','Linda','Lindsay','Lindsey','Lisa','Lois','Lola','Lorena','Loretta','Lori','Lorraine',
-  'Louise','Lucia','Lucille','Lucy','Lydia','Lynn','Lynne','Mabel','Madeleine','Madeline',
-  'Madison','Mae','Maggie','Mandy','Marcella','Marcia','Margaret','Margarita','Marguerite',
-  'Maria','Marian','Marianne','Marie','Marilyn','Marina','Marjorie','Marlene','Marsha','Martha',
-  'Mary','Maureen','Maxine','May','Megan','Melanie','Melinda','Melissa','Mercedes','Meredith',
-  'Michele','Michelle','Mildred','Millicent','Mindy','Minnie','Miranda','Miriam','Misty',
-  'Molly','Monica','Monique','Morgan','Muriel','Myra','Myrtle','Nadine','Nancy','Naomi',
-  'Natalie','Natasha','Nellie','Nicole','Nina','Nora','Norma','Olga','Olive','Olivia','Opal',
-  'Pam','Pamela','Pat','Patricia','Patsy','Patti','Patty','Paula','Paulette','Pauline','Pearl',
-  'Peggy','Penny','Phyllis','Polly','Priscilla','Rachel','Ramona','Rebecca','Regina','Renee',
-  'Rhonda','Rita','Roberta','Robin','Robyn','Rochelle','Rosa','Rosalie','Rose','Rosemary',
-  'Rosie','Roxanne','Ruby','Ruth','Sabrina','Sadie','Sally','Samantha','Sandra','Sandy','Sara',
-  'Sarah','Savannah','Selma','Shannon','Sharon','Sheila','Shelby','Shelly','Sheri','Sherri',
-  'Sherry','Shirley','Sierra','Silvia','Simone','Sofia','Sonia','Sonya','Sophia','Sophie',
-  'Stacey','Stacy','Stella','Stephanie','Sue','Summer','Susan','Susanne','Susie','Suzanne',
-  'Sylvia','Tabitha','Tamara','Tammy','Tanya','Tara','Teresa','Teri','Terri','Terry','Tess',
-  'Thelma','Theresa','Tiffany','Tina','Toni','Tonya','Tracey','Tracy','Ursula','Valerie',
-  'Vanessa','Vera','Verna','Veronica','Vicki','Vickie','Vicky','Victoria','Viola','Violet',
-  'Virginia','Vivian','Wanda','Wendy','Whitney','Wilma','Winifred','Yolanda','Yvette','Yvonne',
-];
-
-const LAST_NAMES = [
-  'Abbott','Acevedo','Acosta','Adams','Adkins','Aguilar','Aguirre','Albert','Alexander','Alford',
-  'Allen','Allison','Alston','Alvarado','Alvarez','Anderson','Andrews','Anthony','Armstrong',
-  'Arnold','Ashley','Atkins','Atkinson','Austin','Avery','Avila','Ayala','Ayers','Bailey','Baker',
-  'Baldwin','Ball','Ballard','Banks','Barber','Barker','Barlow','Barnes','Barnett','Barr',
-  'Barrett','Barron','Barry','Bartlett','Barton','Bass','Bates','Battle','Bauer','Baxter','Bean',
-  'Beard','Beasley','Beck','Becker','Bell','Bender','Benjamin','Bennett','Benson','Bentley',
-  'Benton','Berg','Berger','Bernard','Berry','Best','Bird','Bishop','Black','Blackburn',
-  'Blackwell','Blair','Blake','Blanchard','Blankenship','Blevins','Bolton','Bond','Booker',
-  'Boone','Booth','Bowen','Bowers','Bowman','Boyd','Boyer','Boyle','Bradford','Bradley','Brady',
-  'Branch','Bray','Brennan','Brewer','Bridges','Briggs','Bright','Britt','Brock','Brooks',
-  'Brown','Browning','Bruce','Bryan','Bryant','Buchanan','Buck','Buckley','Buckner','Bullock',
-  'Burch','Burgess','Burke','Burnett','Burns','Burris','Burt','Burton','Bush','Butler','Byrd',
-  'Cabrera','Cain','Calderon','Caldwell','Calhoun','Callahan','Camacho','Cameron','Campbell',
-  'Campos','Cannon','Cantrell','Cantu','Cardenas','Carey','Carlson','Carney','Carpenter','Carr',
-  'Carrillo','Carroll','Carson','Carter','Carver','Case','Casey','Cash','Castaneda','Castillo',
-  'Castro','Cervantes','Chambers','Chan','Chandler','Chang','Chapman','Charles','Chase','Chavez',
-  'Chen','Cherry','Christensen','Christian','Church','Clark','Clarke','Clay','Clayton','Clements',
-  'Cline','Cobb','Cochran','Coffey','Cohen','Cole','Coleman','Collier','Collins','Colon',
-  'Combs','Compton','Conley','Conner','Conrad','Contreras','Conway','Cook','Cooke','Cooley',
-  'Cooper','Copeland','Cortez','Costa','Couch','Cox','Craft','Craig','Crane','Crawford','Cross',
-  'Cruz','Cummings','Cunningham','Curry','Curtis','Dale','Dalton','Daniel','Daniels','David',
-  'Davidson','Davis','Dawson','Day','Dean','Decker','Dejesus','Delacruz','Deleon','Delgado',
-  'Dennis','Diaz','Dickerson','Dickson','Dillard','Dixon','Dodson','Donaldson','Donovan',
-  'Dorsey','Dougherty','Douglas','Downs','Doyle','Drake','Dudley','Duffy','Duke','Duncan',
-  'Dunlap','Dunn','Duran','Durham','Dyer','Eaton','Edwards','Elliott','Ellis','Ellison',
-  'English','Erickson','Espinoza','Estes','Estrada','Evans','Everett','Ewing','Farmer',
-  'Farrell','Faulkner','Ferguson','Fernandez','Ferrell','Fields','Figueroa','Finch','Finley',
-  'Fischer','Fisher','Fitzgerald','Fitzpatrick','Fleming','Fletcher','Flores','Flowers','Floyd',
-  'Flynn','Foley','Forbes','Ford','Foreman','Foster','Fowler','Fox','Francis','Franco','Frank',
-  'Franklin','Frazier','Frederick','Freeman','French','Frost','Fry','Frye','Fuentes','Fuller',
-  'Fulton','Gallagher','Gallegos','Galloway','Gamble','Garcia','Gardner','Garner','Garrett',
-  'Garrison','Garza','Gates','Gay','Gentry','George','Gibbs','Gibson','Gilbert','Giles','Gill',
-  'Gillespie','Gilliam','Gilmore','Glass','Glenn','Glover','Goff','Golden','Gomez','Gonzales',
-  'Gonzalez','Good','Goodman','Goodwin','Gordon','Gould','Graham','Grant','Graves','Gray',
-  'Green','Greene','Greer','Gregory','Griffin','Griffith','Grimes','Gross','Guerra','Guerrero',
-  'Gutierrez','Guy','Guzman','Hahn','Hale','Haley','Hall','Hamilton','Hammond','Hampton',
-  'Hancock','Haney','Hansen','Hanson','Hardin','Harding','Hardy','Harmon','Harper','Harrell',
-  'Harrington','Harris','Harrison','Hart','Hartman','Harvey','Hatfield','Hawkins','Hayden',
-  'Hayes','Haynes','Hays','Heath','Hebert','Henderson','Hendricks','Hendrix','Henry','Hensley',
-  'Henson','Herman','Hernandez','Herrera','Herring','Hess','Hester','Hewitt','Hickman','Hicks',
-  'Higgins','Hill','Hines','Hinton','Ho','Hobbs','Hodge','Hodges','Hoffman','Hogan','Holcomb',
-  'Holden','Holder','Holland','Holloway','Holman','Holmes','Holt','Hood','Hooper','Hopkins',
-  'Horn','Horne','Horton','House','Houston','Howard','Howe','Howell','Hubbard','Huber','Hudson',
-  'Huffman','Hughes','Hull','Humphrey','Hunt','Hunter','Hurley','Hurst','Hutchinson','Hyde',
-  'Ingram','Irwin','Jackson','Jacobs','Jacobson','James','Jarvis','Jefferson','Jenkins',
-  'Jennings','Jensen','Jimenez','Johns','Johnson','Johnston','Jones','Jordan','Joseph','Joyce',
-  'Juarez','Justice','Kane','Kaufman','Keith','Keller','Kelley','Kelly','Kemp','Kennedy','Kent',
-  'Kerr','Key','Kidd','Kim','King','Kinney','Kirk','Klein','Kline','Knapp','Knight','Knowles',
-  'Knox','Koch','Kramer','Lamb','Lambert','Lancaster','Landry','Lane','Lang','Langley','Lara',
-  'Larsen','Larson','Lawrence','Lawson','Le','Leach','Leblanc','Lee','Leon','Leonard','Lester',
-  'Levine','Levy','Lewis','Lindsay','Little','Livingston','Lloyd','Logan','Long','Lopez',
-  'Lott','Love','Lowe','Lowery','Lucas','Luna','Lynch','Lynn','Lyons','Macias','Mack','Madden',
-  'Maddox','Maldonado','Malone','Mann','Manning','Marks','Marquez','Marsh','Marshall','Martin',
-  'Martinez','Mason','Massey','Mathews','Mathis','Matthews','Maxwell','May','Mayer','Maynard',
-  'Mayo','Mays','McBride','McCall','McCarthy','McClain','McCormick','McCoy','McCullough',
-  'McDonald','McDowell','McFarland','McGee','McGowan','McGuire','McIntosh','McIntyre','McKay',
-  'McKee','McKenzie','McKinney','McLaughlin','McLean','McMillan','McNeil','McPherson','Meadows',
-  'Medina','Mejia','Melendez','Melton','Mendez','Mendoza','Mercado','Mercer','Merrill','Merritt',
-  'Meyer','Meyers','Michael','Middleton','Miles','Miller','Mills','Miranda','Mitchell','Molina',
-  'Monroe','Montgomery','Montoya','Moody','Moon','Moore','Morales','Moran','Moreno','Morgan',
-  'Morris','Morrison','Morrow','Morse','Morton','Moses','Mosley','Moss','Mueller','Mullen',
-  'Mullins','Munoz','Murphy','Murray','Myers','Nash','Navarro','Neal','Nelson','Newman','Newton',
-  'Nguyen','Nichols','Nicholson','Nielsen','Nixon','Noble','Noel','Nolan','Norman','Norris',
-  'Norton','Novak','Nunez','Obrien','Ochoa','Oconnor','Odom','Odonnell','Oliver','Olsen','Olson',
-  'Oneal','Oneill','Orr','Ortega','Ortiz','Osborn','Osborne','Owen','Owens','Pace','Pacheco',
-  'Padilla','Page','Palmer','Park','Parker','Parks','Parrish','Parsons','Pate','Patel','Patrick',
-  'Patterson','Patton','Paul','Payne','Pearson','Peck','Pena','Pennington','Perez','Perkins',
-  'Perry','Peters','Petersen','Peterson','Petty','Phelps','Phillips','Pierce','Pittman','Pitts',
-  'Pollard','Poole','Pope','Porter','Potter','Potts','Powell','Powers','Pratt','Preston','Price',
-  'Prince','Pruitt','Pugh','Quinn','Ramirez','Ramos','Ramsey','Randall','Randolph','Rangel',
-  'Rasmussen','Ratliff','Ray','Raymond','Reed','Reese','Reeves','Reid','Reilly','Reyes',
-  'Reynolds','Rhodes','Rice','Rich','Richard','Richards','Richardson','Richmond','Riley','Rios',
-  'Rivas','Rivera','Rivers','Roach','Robbins','Roberson','Roberts','Robertson','Robinson',
-  'Robles','Rocha','Rodgers','Rodriguez','Rogers','Rojas','Rollins','Roman','Romero','Rosa',
-  'Rosales','Rosario','Rose','Ross','Roth','Rowe','Rowland','Roy','Rubio','Ruiz','Rush',
-  'Russell','Russo','Rutledge','Ryan','Salas','Salazar','Salinas','Sampson','Sanchez','Sanders',
-  'Sandoval','Sanford','Santiago','Santos','Sargent','Saunders','Savage','Sawyer','Schmidt',
-  'Schneider','Schroeder','Schultz','Schwartz','Scott','Sears','Sellers','Serrano','Sexton',
-  'Shaffer','Shannon','Sharp','Sharpe','Shaw','Shelton','Shepard','Shepherd','Sheppard',
-  'Sherman','Shields','Short','Silva','Simmons','Simon','Simpson','Sims','Singleton','Skinner',
-  'Slater','Sloan','Small','Smith','Snider','Snow','Snyder','Solis','Solomon','Sosa','Soto',
-  'Sparks','Spears','Spence','Spencer','Stafford','Stanley','Stanton','Stark','Steele','Stein',
-  'Stephens','Stephenson','Stevens','Stevenson','Stewart','Stokes','Stone','Stout','Strickland',
-  'Strong','Stuart','Suarez','Sullivan','Summers','Sutton','Swanson','Sweeney','Sweet','Sykes',
-  'Talley','Tanner','Tate','Taylor','Terrell','Terry','Thomas','Thompson','Thornton','Tillman',
-  'Todd','Torres','Townsend','Tran','Travis','Trevino','Trujillo','Tucker','Turner','Tyler',
-  'Underwood','Valdez','Valencia','Valentine','Valenzuela','Vance','Vargas','Vasquez','Vaughan',
-  'Vaughn','Vazquez','Vega','Velasquez','Velazquez','Velez','Villarreal','Vincent','Wade',
-  'Wagner','Walker','Wall','Wallace','Waller','Wallis','Walsh','Walter','Walters','Walton',
-  'Ward','Ware','Warner','Warren','Washington','Waters','Watkins','Watson','Watts','Weaver',
-  'Webb','Weber','Webster','Weeks','Weiss','Welch','Wells','West','Wheeler','Whitaker','White',
-  'Whitehead','Whitfield','Whitley','Whitney','Wiggins','Wilcox','Wilder','Wiley','Wilkerson',
-  'Wilkins','Wilkinson','William','Williams','Williamson','Willis','Wilson','Winters','Wise',
-  'Wolf','Wolfe','Wong','Wood','Woodard','Woods','Woodward','Wooten','Workman','Wright','Wyatt',
-  'Yates','York','Young','Zamora','Zimmerman',
-];
-
-const STREET_SUFFIXES = [
-  'Alley','Avenue','Branch','Bridge','Brook','Bypass','Canyon','Cape','Causeway','Center','Circle',
-  'Cliff','Club','Common','Corner','Court','Cove','Creek','Crescent','Crest','Crossing','Curve',
-  'Dale','Dam','Divide','Drive','Drives','Estate','Expressway','Extension','Fall','Falls','Ferry',
-  'Field','Fields','Flat','Ford','Forest','Forge','Fork','Forks','Fort','Freeway','Garden',
-  'Gateway','Glen','Green','Grove','Harbor','Haven','Heights','Highway','Hill','Hills','Hollow',
-  'Inlet','Island','Isle','Junction','Key','Knoll','Lake','Lakes','Landing','Lane','Light','Loaf',
-  'Lock','Lodge','Loop','Mall','Manor','Meadow','Meadows','Mews','Mill','Mills','Mission',
-  'Motorway','Mount','Mountain','Mountains','Neck','Orchard','Oval','Overpass','Park','Parkway',
-  'Pass','Passage','Path','Pike','Pine','Pines','Place','Plain','Plains','Plaza','Point','Port',
-  'Prairie','Radial','Ramp','Ranch','Rapid','Rapids','Rest','Ridge','River','Road','Roads',
-  'Route','Row','Rue','Run','Shore','Skyway','Spring','Springs','Spur','Square','Station',
-  'Stream','Street','Summit','Terrace','Throughway','Trace','Track','Trail','Tunnel','Turnpike',
-  'Underpass','Union','Valley','Via','Viaduct','View','Village','Vista','Walk','Wall','Way',
-  'Well','Wells',
-];
-
-const CITY_PREFIXES = ['North','East','West','South','New','Lake','Port'];
-const CITY_SUFFIXES = [
-  'town','ton','land','ville','berg','burgh','borough','bury','view','port',
-  'mouth','stad','furt','chester','fort','haven','side','shire',
-];
-
-const US_STATES: { name: string; abbr: string; zipPrefix: string }[] = [
-  { name: 'Alabama', abbr: 'AL', zipPrefix: '350' },
-  { name: 'Alaska', abbr: 'AK', zipPrefix: '995' },
-  { name: 'Arizona', abbr: 'AZ', zipPrefix: '850' },
-  { name: 'Arkansas', abbr: 'AR', zipPrefix: '717' },
-  { name: 'California', abbr: 'CA', zipPrefix: '900' },
-  { name: 'Colorado', abbr: 'CO', zipPrefix: '800' },
-  { name: 'Connecticut', abbr: 'CT', zipPrefix: '061' },
-  { name: 'Delaware', abbr: 'DE', zipPrefix: '198' },
-  { name: 'Florida', abbr: 'FL', zipPrefix: '322' },
-  { name: 'Georgia', abbr: 'GA', zipPrefix: '301' },
-  { name: 'Hawaii', abbr: 'HI', zipPrefix: '967' },
-  { name: 'Idaho', abbr: 'ID', zipPrefix: '832' },
-  { name: 'Illinois', abbr: 'IL', zipPrefix: '600' },
-  { name: 'Indiana', abbr: 'IN', zipPrefix: '463' },
-  { name: 'Iowa', abbr: 'IA', zipPrefix: '510' },
-  { name: 'Kansas', abbr: 'KS', zipPrefix: '666' },
-  { name: 'Kentucky', abbr: 'KY', zipPrefix: '404' },
-  { name: 'Louisiana', abbr: 'LA', zipPrefix: '701' },
-  { name: 'Maine', abbr: 'ME', zipPrefix: '042' },
-  { name: 'Maryland', abbr: 'MD', zipPrefix: '210' },
-  { name: 'Massachusetts', abbr: 'MA', zipPrefix: '026' },
-  { name: 'Michigan', abbr: 'MI', zipPrefix: '480' },
-  { name: 'Minnesota', abbr: 'MN', zipPrefix: '555' },
-  { name: 'Mississippi', abbr: 'MS', zipPrefix: '387' },
-  { name: 'Missouri', abbr: 'MO', zipPrefix: '650' },
-  { name: 'Montana', abbr: 'MT', zipPrefix: '590' },
-  { name: 'Nebraska', abbr: 'NE', zipPrefix: '688' },
-  { name: 'Nevada', abbr: 'NV', zipPrefix: '898' },
-  { name: 'New Hampshire', abbr: 'NH', zipPrefix: '036' },
-  { name: 'New Jersey', abbr: 'NJ', zipPrefix: '076' },
-  { name: 'New Mexico', abbr: 'NM', zipPrefix: '880' },
-  { name: 'New York', abbr: 'NY', zipPrefix: '122' },
-  { name: 'North Carolina', abbr: 'NC', zipPrefix: '288' },
-  { name: 'North Dakota', abbr: 'ND', zipPrefix: '586' },
-  { name: 'Ohio', abbr: 'OH', zipPrefix: '444' },
-  { name: 'Oklahoma', abbr: 'OK', zipPrefix: '730' },
-  { name: 'Oregon', abbr: 'OR', zipPrefix: '979' },
-  { name: 'Pennsylvania', abbr: 'PA', zipPrefix: '186' },
-  { name: 'Rhode Island', abbr: 'RI', zipPrefix: '029' },
-  { name: 'South Carolina', abbr: 'SC', zipPrefix: '299' },
-  { name: 'South Dakota', abbr: 'SD', zipPrefix: '577' },
-  { name: 'Tennessee', abbr: 'TN', zipPrefix: '383' },
-  { name: 'Texas', abbr: 'TX', zipPrefix: '798' },
-  { name: 'Utah', abbr: 'UT', zipPrefix: '847' },
-  { name: 'Vermont', abbr: 'VT', zipPrefix: '050' },
-  { name: 'Virginia', abbr: 'VA', zipPrefix: '222' },
-  { name: 'Washington', abbr: 'WA', zipPrefix: '990' },
-  { name: 'West Virginia', abbr: 'WV', zipPrefix: '247' },
-  { name: 'Wisconsin', abbr: 'WI', zipPrefix: '549' },
-  { name: 'Wyoming', abbr: 'WY', zipPrefix: '831' },
-];
-
-const COUNTRIES = [
-  { name: 'United States', code: 'US' },
-  { name: 'United Kingdom', code: 'GB' },
-  { name: 'Canada', code: 'CA' },
-  { name: 'Australia', code: 'AU' },
-  { name: 'Germany', code: 'DE' },
-  { name: 'France', code: 'FR' },
-  { name: 'Japan', code: 'JP' },
-  { name: 'Brazil', code: 'BR' },
-  { name: 'India', code: 'IN' },
-  { name: 'Mexico', code: 'MX' },
-  { name: 'Italy', code: 'IT' },
-  { name: 'Spain', code: 'ES' },
-  { name: 'Netherlands', code: 'NL' },
-  { name: 'South Korea', code: 'KR' },
-  { name: 'Sweden', code: 'SE' },
-  { name: 'Switzerland', code: 'CH' },
-  { name: 'Norway', code: 'NO' },
-  { name: 'Singapore', code: 'SG' },
-  { name: 'New Zealand', code: 'NZ' },
-  { name: 'Ireland', code: 'IE' },
-];
-
-const PHONE_AREA_CODES = [
-  '201','212','213','305','310','312','321','347','404','415',
-  '416','503','514','602','604','613','617','619','646','702',
-  '713','718','786','832','905','917','929','949','954','972',
-];
-
-const SECONDARY_ADDRESS = ['Apt. ', 'Suite ', 'Unit '];
-
-const EMAIL_DOMAINS = [
-  'gmail.com','yahoo.com','hotmail.com','outlook.com','icloud.com',
-  'protonmail.com','mail.com','aol.com','live.com','zoho.com',
-];
+// Address Generator - Multi-country support
+// Data sourced from faker-ruby/faker
 
 // ============== UTILITIES ==============
-
 function randomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
 function randomPick<T>(arr: T[]): T {
   return arr[randomInt(0, arr.length - 1)];
 }
-
 function randomDigits(count: number): string {
   let s = '';
   for (let i = 0; i < count; i++) s += randomInt(0, 9).toString();
   return s;
 }
+
+// ============== SHARED NAME DATA ==============
+const MALE_FIRST_NAMES = [
+  'Aaron','Adam','Adrian','Alan','Albert','Alex','Alexander','Alfred','Andrew','Anthony',
+  'Arthur','Austin','Barry','Ben','Benjamin','Bernard','Bill','Billy','Blake','Bob','Bobby',
+  'Brad','Bradley','Brandon','Brent','Brett','Brian','Bruce','Bryan','Byron','Caleb','Calvin',
+  'Cameron','Carl','Carlos','Carter','Chad','Charles','Charlie','Chase','Chris','Christian',
+  'Christopher','Clark','Clayton','Clyde','Cody','Colin','Colton','Conrad','Craig','Curtis',
+  'Dale','Dallas','Dalton','Damian','Dan','Daniel','Danny','Darius','Darren','Dave','David',
+  'Dean','Dennis','Derek','Derrick','Desmond','Devin','Diego','Don','Donald','Douglas','Drew',
+  'Duncan','Dustin','Dylan','Earl','Ed','Eddie','Edgar','Eduardo','Edward','Edwin','Eli',
+  'Elijah','Elliott','Eric','Erik','Ernest','Ethan','Eugene','Evan','Felix','Fernando','Floyd',
+  'Francis','Francisco','Frank','Franklin','Fred','Frederick','Gabriel','Gary','Gavin','Gene',
+  'George','Gerald','Gilbert','Glen','Glenn','Gordon','Graham','Grant','Greg','Gregory','Guy',
+  'Harold','Harrison','Harry','Harvey','Hector','Henry','Herbert','Howard','Hugh','Hugo',
+  'Hunter','Ian','Isaac','Isaiah','Ivan','Jack','Jackson','Jacob','Jake','James','Jamie',
+  'Jared','Jason','Javier','Jay','Jeff','Jeffrey','Jeremy','Jerome','Jerry','Jesse','Jim',
+  'Jimmy','Joe','Joel','John','Johnny','Jon','Jonathan','Jordan','Jorge','Jose','Joseph',
+  'Josh','Joshua','Juan','Julian','Justin','Karl','Keith','Ken','Kenneth','Kevin','Kirk',
+  'Kurt','Kyle','Lance','Larry','Lawrence','Lee','Leo','Leon','Leonard','Lewis','Lincoln',
+  'Lloyd','Logan','Lorenzo','Louis','Lucas','Luis','Luke','Malcolm','Manuel','Marc','Marco',
+  'Marcus','Mario','Mark','Marshall','Martin','Marvin','Mason','Matt','Matthew','Maurice',
+  'Max','Michael','Miguel','Mike','Miles','Milton','Mitchell','Mohamed','Morgan','Nathan',
+  'Nathaniel','Neil','Nelson','Nicholas','Nick','Noah','Norman','Oliver','Omar','Oscar','Owen',
+  'Pablo','Parker','Patrick','Paul','Pedro','Peter','Philip','Preston','Rafael','Ralph',
+  'Ramon','Randall','Randy','Raul','Ray','Raymond','Rene','Ricardo','Richard','Rick','Riley',
+  'Rob','Robert','Roberto','Robin','Rod','Rodney','Roger','Roland','Ron','Ronald','Ross','Roy',
+  'Ruben','Russell','Ryan','Sam','Samuel','Santiago','Scott','Sean','Sergio','Seth','Shane',
+  'Shaun','Sidney','Simon','Solomon','Spencer','Stanley','Stephen','Steve','Steven','Stuart',
+  'Taylor','Ted','Terry','Theodore','Thomas','Tim','Timothy','Todd','Tom','Tommy','Tony',
+  'Travis','Trevor','Troy','Tyler','Victor','Vincent','Wade','Walter','Warren','Wayne','Wesley',
+  'Will','William','Willie','Wilson','Xavier','Zachary',
+];
+
+const FEMALE_FIRST_NAMES = [
+  'Abigail','Ada','Alexandra','Alice','Alicia','Allison','Alyssa','Amanda','Amber','Amelia',
+  'Amy','Ana','Andrea','Angela','Angelica','Anita','Ann','Anna','Anne','Annette','Annie',
+  'April','Ashley','Audrey','Aurora','Autumn','Ava','Barbara','Beatrice','Becky','Beth',
+  'Betty','Beverly','Bianca','Bonnie','Brenda','Bridget','Brittany','Brooke','Camille',
+  'Candace','Carla','Carmen','Carol','Caroline','Carolyn','Carrie','Casey','Catherine','Cathy',
+  'Charlotte','Chelsea','Cheryl','Chloe','Christina','Christine','Cindy','Claire','Clara',
+  'Claudia','Colleen','Connie','Courtney','Crystal','Cynthia','Daisy','Dana','Danielle',
+  'Dawn','Debbie','Deborah','Denise','Diana','Diane','Donna','Doris','Dorothy','Edith',
+  'Eileen','Eleanor','Elena','Elizabeth','Ella','Ellen','Emily','Emma','Erica','Erin','Esther',
+  'Eva','Evelyn','Faith','Faye','Felicia','Florence','Frances','Gabriela','Gail','Georgia',
+  'Gina','Gladys','Gloria','Grace','Gretchen','Hannah','Harriet','Hazel','Heather','Heidi',
+  'Helen','Holly','Hope','Ida','Irene','Iris','Isabel','Isabella','Ivy','Jackie','Jacqueline',
+  'Jade','Jamie','Jane','Janet','Janice','Jasmine','Jean','Jenna','Jennifer','Jenny','Jessica',
+  'Jill','Joan','Joanna','Jocelyn','Josephine','Joy','Joyce','Judith','Judy','Julia','Julie',
+  'June','Karen','Kate','Katherine','Kathleen','Kathryn','Katie','Kayla','Kelly','Kimberly',
+  'Kristen','Kristin','Laura','Lauren','Laurie','Leah','Leslie','Lillian','Lily','Linda',
+  'Lindsay','Lisa','Lois','Loretta','Lori','Louise','Lucy','Lydia','Lynn','Mabel','Madeline',
+  'Madison','Maggie','Margaret','Maria','Marie','Marilyn','Marina','Marjorie','Martha','Mary',
+  'Maureen','Megan','Melanie','Melissa','Michelle','Mildred','Miranda','Molly','Monica',
+  'Morgan','Nancy','Naomi','Natalie','Natasha','Nicole','Nina','Nora','Norma','Olivia','Pam',
+  'Pamela','Patricia','Paula','Pauline','Peggy','Penny','Phyllis','Rachel','Rebecca','Regina',
+  'Renee','Rhonda','Rita','Roberta','Robin','Rosa','Rose','Rosemary','Ruby','Ruth','Sabrina',
+  'Sally','Samantha','Sandra','Sara','Sarah','Shannon','Sharon','Sheila','Shelby','Sherry',
+  'Shirley','Sierra','Sofia','Sophia','Stacey','Stella','Stephanie','Sue','Susan','Suzanne',
+  'Sylvia','Tamara','Tammy','Tanya','Tara','Teresa','Terri','Theresa','Tiffany','Tina','Tonya',
+  'Tracy','Valerie','Vanessa','Vera','Veronica','Victoria','Virginia','Vivian','Wanda','Wendy',
+  'Whitney','Yolanda','Yvonne',
+];
+
+const LAST_NAMES = [
+  'Abbott','Adams','Aguilar','Alexander','Allen','Alvarez','Anderson','Andrews','Armstrong',
+  'Arnold','Austin','Bailey','Baker','Baldwin','Banks','Barnes','Barnett','Barrett','Barton',
+  'Bass','Bates','Beck','Bell','Bennett','Benson','Berry','Bishop','Black','Blair','Blake',
+  'Bolton','Bond','Bowen','Boyd','Bradley','Brady','Brennan','Brewer','Bridges','Brooks',
+  'Brown','Bruce','Bryan','Bryant','Buchanan','Burke','Burns','Burton','Bush','Butler','Byrd',
+  'Caldwell','Campbell','Cannon','Carlson','Carpenter','Carr','Carroll','Carson','Carter',
+  'Casey','Castillo','Castro','Chambers','Chan','Chandler','Chang','Chapman','Chase','Chen',
+  'Clark','Clay','Clayton','Cole','Coleman','Collins','Cook','Cooper','Cox','Craig','Crawford',
+  'Cross','Cruz','Cunningham','Curtis','Daniel','Daniels','Davidson','Davis','Dawson','Day',
+  'Dean','Dennis','Diaz','Dixon','Douglas','Drake','Duncan','Dunn','Edwards','Elliott','Ellis',
+  'Evans','Farmer','Ferguson','Fernandez','Fields','Fisher','Fitzgerald','Fleming','Fletcher',
+  'Flores','Floyd','Ford','Foster','Fowler','Fox','Francis','Frank','Franklin','Freeman',
+  'French','Frost','Fuller','Garcia','Gardner','Garrett','Gates','George','Gibson','Gilbert',
+  'Glenn','Gomez','Gonzalez','Gordon','Graham','Grant','Graves','Gray','Green','Gregory',
+  'Griffin','Gross','Guerrero','Gutierrez','Hall','Hamilton','Hammond','Hansen','Hardy',
+  'Harper','Harris','Harrison','Hart','Harvey','Hawkins','Hayes','Henderson','Henry',
+  'Hernandez','Herrera','Hicks','Hill','Hoffman','Holland','Holmes','Holt','Hopkins','Houston',
+  'Howard','Howell','Hudson','Hughes','Hunt','Hunter','Jackson','Jacobs','James','Jenkins',
+  'Jensen','Jimenez','Johnson','Johnston','Jones','Jordan','Joseph','Kane','Kelly','Kennedy',
+  'Kim','King','Klein','Knight','Knox','Kramer','Lambert','Lane','Larson','Lawrence','Lawson',
+  'Lee','Leonard','Lewis','Little','Lloyd','Logan','Long','Lopez','Lowe','Lucas','Lynch',
+  'Manning','Marshall','Martin','Martinez','Mason','Matthews','Maxwell','May','McCarthy',
+  'McDonald','McKenzie','McLaughlin','Medina','Mendez','Meyer','Miles','Miller','Mills',
+  'Mitchell','Monroe','Montgomery','Moore','Morales','Morgan','Morris','Morrison','Murphy',
+  'Murray','Myers','Nash','Nelson','Newman','Newton','Nguyen','Nichols','Norman','Norton',
+  'Oliver','Olson','Ortega','Ortiz','Owen','Owens','Page','Palmer','Parker','Parks','Parsons',
+  'Patel','Patrick','Patterson','Paul','Payne','Pearson','Perez','Perkins','Perry','Peters',
+  'Peterson','Phillips','Pierce','Pope','Porter','Potter','Powell','Price','Quinn','Ramirez',
+  'Ramos','Randall','Ray','Reed','Reeves','Reid','Reyes','Reynolds','Rhodes','Rice','Richards',
+  'Richardson','Riley','Rivera','Roberts','Robertson','Robinson','Rodriguez','Rogers','Roman',
+  'Romero','Rose','Ross','Rowe','Ruiz','Russell','Ryan','Salazar','Sanchez','Sanders',
+  'Sandoval','Santiago','Santos','Saunders','Schmidt','Schneider','Schultz','Scott','Shaw',
+  'Shelton','Sherman','Silva','Simmons','Simon','Simpson','Singh','Smith','Snyder','Solomon',
+  'Spencer','Stanley','Steele','Stephens','Stevens','Stewart','Stone','Sullivan','Summers',
+  'Sutton','Swanson','Tanner','Tate','Taylor','Terry','Thomas','Thompson','Todd','Torres',
+  'Tucker','Turner','Tyler','Valdez','Vargas','Vasquez','Vaughn','Vincent','Wade','Wagner',
+  'Walker','Wallace','Walsh','Walters','Ward','Warner','Warren','Washington','Watson','Watts',
+  'Weaver','Webb','Weber','Webster','Wells','West','Wheeler','White','Williams','Williamson',
+  'Willis','Wilson','Wolf','Wong','Wood','Woods','Wright','Wyatt','Young','Zimmerman',
+];
+
+// ============== COUNTRY LOCALE DATA ==============
+interface CountryLocale {
+  name: string;
+  code: string;
+  regions: { name: string; abbr: string; postalPrefix: string }[];
+  postalFormat: (region?: string) => string;
+  phoneFormat: () => string;
+  cities: string[];
+  streetSuffixes: string[];
+  addressFormat: 'us' | 'eu' | 'uk' | 'jp' | 'br';
+}
+
+const COUNTRY_LOCALES: Record<string, CountryLocale> = {
+  US: {
+    name: 'United States', code: 'US',
+    regions: [
+      {name:'Alabama',abbr:'AL',postalPrefix:'350'},{name:'Alaska',abbr:'AK',postalPrefix:'995'},
+      {name:'Arizona',abbr:'AZ',postalPrefix:'850'},{name:'Arkansas',abbr:'AR',postalPrefix:'717'},
+      {name:'California',abbr:'CA',postalPrefix:'900'},{name:'Colorado',abbr:'CO',postalPrefix:'800'},
+      {name:'Connecticut',abbr:'CT',postalPrefix:'061'},{name:'Delaware',abbr:'DE',postalPrefix:'198'},
+      {name:'Florida',abbr:'FL',postalPrefix:'322'},{name:'Georgia',abbr:'GA',postalPrefix:'301'},
+      {name:'Hawaii',abbr:'HI',postalPrefix:'967'},{name:'Idaho',abbr:'ID',postalPrefix:'832'},
+      {name:'Illinois',abbr:'IL',postalPrefix:'600'},{name:'Indiana',abbr:'IN',postalPrefix:'463'},
+      {name:'Iowa',abbr:'IA',postalPrefix:'510'},{name:'Kansas',abbr:'KS',postalPrefix:'666'},
+      {name:'Kentucky',abbr:'KY',postalPrefix:'404'},{name:'Louisiana',abbr:'LA',postalPrefix:'701'},
+      {name:'Maine',abbr:'ME',postalPrefix:'042'},{name:'Maryland',abbr:'MD',postalPrefix:'210'},
+      {name:'Massachusetts',abbr:'MA',postalPrefix:'026'},{name:'Michigan',abbr:'MI',postalPrefix:'480'},
+      {name:'Minnesota',abbr:'MN',postalPrefix:'555'},{name:'Mississippi',abbr:'MS',postalPrefix:'387'},
+      {name:'Missouri',abbr:'MO',postalPrefix:'650'},{name:'Montana',abbr:'MT',postalPrefix:'590'},
+      {name:'Nebraska',abbr:'NE',postalPrefix:'688'},{name:'Nevada',abbr:'NV',postalPrefix:'898'},
+      {name:'New Hampshire',abbr:'NH',postalPrefix:'036'},{name:'New Jersey',abbr:'NJ',postalPrefix:'076'},
+      {name:'New Mexico',abbr:'NM',postalPrefix:'880'},{name:'New York',abbr:'NY',postalPrefix:'122'},
+      {name:'North Carolina',abbr:'NC',postalPrefix:'288'},{name:'North Dakota',abbr:'ND',postalPrefix:'586'},
+      {name:'Ohio',abbr:'OH',postalPrefix:'444'},{name:'Oklahoma',abbr:'OK',postalPrefix:'730'},
+      {name:'Oregon',abbr:'OR',postalPrefix:'979'},{name:'Pennsylvania',abbr:'PA',postalPrefix:'186'},
+      {name:'Rhode Island',abbr:'RI',postalPrefix:'029'},{name:'South Carolina',abbr:'SC',postalPrefix:'299'},
+      {name:'South Dakota',abbr:'SD',postalPrefix:'577'},{name:'Tennessee',abbr:'TN',postalPrefix:'383'},
+      {name:'Texas',abbr:'TX',postalPrefix:'798'},{name:'Utah',abbr:'UT',postalPrefix:'847'},
+      {name:'Vermont',abbr:'VT',postalPrefix:'050'},{name:'Virginia',abbr:'VA',postalPrefix:'222'},
+      {name:'Washington',abbr:'WA',postalPrefix:'990'},{name:'West Virginia',abbr:'WV',postalPrefix:'247'},
+      {name:'Wisconsin',abbr:'WI',postalPrefix:'549'},{name:'Wyoming',abbr:'WY',postalPrefix:'831'},
+    ],
+    postalFormat: (r) => { const p = COUNTRY_LOCALES.US.regions.find(s=>s.abbr===r); return (p?p.postalPrefix:randomDigits(3))+randomDigits(2); },
+    phoneFormat: () => { const a=randomPick(['201','212','213','305','310','312','404','415','503','617','646','702','713','718','832','917']); return randomPick([`(${a}) ${randomDigits(3)}-${randomDigits(4)}`,`${a}-${randomDigits(3)}-${randomDigits(4)}`,`+1 ${a} ${randomDigits(3)} ${randomDigits(4)}`]); },
+    cities: ['New York','Los Angeles','Chicago','Houston','Phoenix','Philadelphia','San Antonio','San Diego','Dallas','San Jose','Austin','Jacksonville','Fort Worth','Columbus','Charlotte','Indianapolis','San Francisco','Seattle','Denver','Nashville','Oklahoma City','Portland','Las Vegas','Memphis','Louisville','Baltimore','Milwaukee','Albuquerque','Tucson','Fresno','Sacramento','Mesa','Kansas City','Atlanta','Omaha','Colorado Springs','Raleigh','Long Beach','Virginia Beach','Miami','Oakland','Minneapolis','Tampa','Tulsa','Arlington','New Orleans'],
+    streetSuffixes: ['Street','Avenue','Boulevard','Drive','Lane','Road','Court','Place','Way','Circle','Trail','Parkway'],
+    addressFormat: 'us',
+  },
+  GB: {
+    name: 'United Kingdom', code: 'GB',
+    regions: [
+      {name:'England',abbr:'ENG',postalPrefix:'E'},{name:'Scotland',abbr:'SCT',postalPrefix:'EH'},
+      {name:'Wales',abbr:'WLS',postalPrefix:'CF'},{name:'Northern Ireland',abbr:'NIR',postalPrefix:'BT'},
+      {name:'Greater London',abbr:'LDN',postalPrefix:'SW'},{name:'South East',abbr:'SE',postalPrefix:'RG'},
+      {name:'South West',abbr:'SW',postalPrefix:'BS'},{name:'East Midlands',abbr:'EM',postalPrefix:'NG'},
+      {name:'West Midlands',abbr:'WM',postalPrefix:'B'},{name:'North West',abbr:'NW',postalPrefix:'M'},
+      {name:'North East',abbr:'NE',postalPrefix:'NE'},{name:'Yorkshire',abbr:'YH',postalPrefix:'LS'},
+      {name:'East of England',abbr:'EE',postalPrefix:'CB'},
+    ],
+    postalFormat: () => randomPick(['SW','EC','WC','SE','NW','E','N','W'])+randomInt(1,20)+' '+randomInt(1,9)+randomPick(['AB','CD','EF','GH','JK','NP','QR','ST','WX','YZ']),
+    phoneFormat: () => randomPick([`+44 ${randomInt(20,79)} ${randomDigits(4)} ${randomDigits(4)}`,`0${randomInt(20,79)} ${randomDigits(4)} ${randomDigits(4)}`,`+44 7${randomDigits(3)} ${randomDigits(6)}`]),
+    cities: ['London','Birmingham','Manchester','Glasgow','Leeds','Liverpool','Edinburgh','Bristol','Sheffield','Leicester','Coventry','Bradford','Cardiff','Belfast','Nottingham','Kingston upon Hull','Newcastle upon Tyne','Stoke-on-Trent','Southampton','Derby','Plymouth','Wolverhampton','Reading','Aberdeen','Swansea','Oxford','Cambridge','Bath','York','Canterbury'],
+    streetSuffixes: ['Street','Road','Lane','Avenue','Close','Drive','Way','Crescent','Terrace','Place','Gardens','Grove','Hill','Mews','Row','Square'],
+    addressFormat: 'uk',
+  },
+  CA: {
+    name: 'Canada', code: 'CA',
+    regions: [
+      {name:'Ontario',abbr:'ON',postalPrefix:'M'},{name:'Quebec',abbr:'QC',postalPrefix:'H'},
+      {name:'British Columbia',abbr:'BC',postalPrefix:'V'},{name:'Alberta',abbr:'AB',postalPrefix:'T'},
+      {name:'Manitoba',abbr:'MB',postalPrefix:'R'},{name:'Saskatchewan',abbr:'SK',postalPrefix:'S'},
+      {name:'Nova Scotia',abbr:'NS',postalPrefix:'B'},{name:'New Brunswick',abbr:'NB',postalPrefix:'E'},
+      {name:'Newfoundland',abbr:'NL',postalPrefix:'A'},{name:'Prince Edward Island',abbr:'PE',postalPrefix:'C'},
+    ],
+    postalFormat: (r) => { const p=COUNTRY_LOCALES.CA.regions.find(s=>s.abbr===r); const l=p?p.postalPrefix:randomPick(['M','H','V','T','R','K','L']); return `${l}${randomInt(1,9)}${randomPick('ABCDEFGHJKLMNPRSTVWXYZ'.split(''))} ${randomInt(1,9)}${randomPick('ABCDEFGHJKLMNPRSTVWXYZ'.split(''))}${randomInt(0,9)}`; },
+    phoneFormat: () => { const a=randomPick(['416','647','905','514','438','604','778','403','587','204','306','902']); return randomPick([`(${a}) ${randomDigits(3)}-${randomDigits(4)}`,`+1 ${a} ${randomDigits(3)} ${randomDigits(4)}`]); },
+    cities: ['Toronto','Montreal','Vancouver','Calgary','Edmonton','Ottawa','Winnipeg','Quebec City','Hamilton','Kitchener','London','Victoria','Halifax','Oshawa','Windsor','Saskatoon','Regina','St. John\'s','Barrie','Kelowna','Sherbrooke','Guelph','Kingston','Moncton','Thunder Bay'],
+    streetSuffixes: ['Street','Avenue','Boulevard','Drive','Road','Way','Crescent','Court','Place','Circle','Trail'],
+    addressFormat: 'us',
+  },
+  AU: {
+    name: 'Australia', code: 'AU',
+    regions: [
+      {name:'New South Wales',abbr:'NSW',postalPrefix:'20'},{name:'Victoria',abbr:'VIC',postalPrefix:'30'},
+      {name:'Queensland',abbr:'QLD',postalPrefix:'40'},{name:'South Australia',abbr:'SA',postalPrefix:'50'},
+      {name:'Western Australia',abbr:'WA',postalPrefix:'60'},{name:'Tasmania',abbr:'TAS',postalPrefix:'70'},
+      {name:'Northern Territory',abbr:'NT',postalPrefix:'08'},{name:'Australian Capital Territory',abbr:'ACT',postalPrefix:'26'},
+    ],
+    postalFormat: (r) => { const p=COUNTRY_LOCALES.AU.regions.find(s=>s.abbr===r); return (p?p.postalPrefix:randomPick(['20','30','40','50','60']))+randomDigits(2); },
+    phoneFormat: () => randomPick([`+61 ${randomInt(2,4)} ${randomDigits(4)} ${randomDigits(4)}`,`0${randomInt(2,4)} ${randomDigits(4)} ${randomDigits(4)}`,`+61 4${randomDigits(2)} ${randomDigits(3)} ${randomDigits(3)}`]),
+    cities: ['Sydney','Melbourne','Brisbane','Perth','Adelaide','Gold Coast','Canberra','Newcastle','Hobart','Wollongong','Geelong','Townsville','Cairns','Darwin','Toowoomba','Ballarat','Bendigo','Launceston','Mackay','Rockhampton'],
+    streetSuffixes: ['Street','Road','Avenue','Drive','Place','Crescent','Court','Way','Lane','Close','Parade','Terrace','Boulevard'],
+    addressFormat: 'us',
+  },
+  DE: {
+    name: 'Germany', code: 'DE',
+    regions: [
+      {name:'Baden-Württemberg',abbr:'BW',postalPrefix:'70'},{name:'Bayern',abbr:'BY',postalPrefix:'80'},
+      {name:'Berlin',abbr:'BE',postalPrefix:'10'},{name:'Brandenburg',abbr:'BB',postalPrefix:'14'},
+      {name:'Bremen',abbr:'HB',postalPrefix:'28'},{name:'Hamburg',abbr:'HH',postalPrefix:'20'},
+      {name:'Hessen',abbr:'HE',postalPrefix:'60'},{name:'Niedersachsen',abbr:'NI',postalPrefix:'30'},
+      {name:'Nordrhein-Westfalen',abbr:'NW',postalPrefix:'40'},{name:'Rheinland-Pfalz',abbr:'RP',postalPrefix:'55'},
+      {name:'Saarland',abbr:'SL',postalPrefix:'66'},{name:'Sachsen',abbr:'SN',postalPrefix:'01'},
+      {name:'Schleswig-Holstein',abbr:'SH',postalPrefix:'24'},{name:'Thüringen',abbr:'TH',postalPrefix:'99'},
+    ],
+    postalFormat: (r) => { const p=COUNTRY_LOCALES.DE.regions.find(s=>s.abbr===r); return (p?p.postalPrefix:randomPick(['10','20','30','40','50','60','70','80']))+randomDigits(3); },
+    phoneFormat: () => randomPick([`+49 ${randomInt(30,89)} ${randomDigits(7)}`,`0${randomInt(30,89)} ${randomDigits(7)}`,`+49 1${randomInt(50,79)} ${randomDigits(7)}`]),
+    cities: ['Berlin','Hamburg','München','Köln','Frankfurt am Main','Stuttgart','Düsseldorf','Leipzig','Dortmund','Essen','Bremen','Dresden','Hannover','Nürnberg','Duisburg','Bochum','Wuppertal','Bielefeld','Bonn','Münster','Mannheim','Karlsruhe','Augsburg','Wiesbaden','Heidelberg','Freiburg'],
+    streetSuffixes: ['Straße','Weg','Gasse','Allee','Ring','Platz','Damm','Ufer','Steig','Pfad'],
+    addressFormat: 'eu',
+  },
+  FR: {
+    name: 'France', code: 'FR',
+    regions: [
+      {name:'Île-de-France',abbr:'IDF',postalPrefix:'75'},{name:'Auvergne-Rhône-Alpes',abbr:'ARA',postalPrefix:'69'},
+      {name:'Nouvelle-Aquitaine',abbr:'NAQ',postalPrefix:'33'},{name:'Occitanie',abbr:'OCC',postalPrefix:'31'},
+      {name:'Hauts-de-France',abbr:'HDF',postalPrefix:'59'},{name:'Provence-Alpes-Côte d\'Azur',abbr:'PAC',postalPrefix:'13'},
+      {name:'Grand Est',abbr:'GES',postalPrefix:'67'},{name:'Pays de la Loire',abbr:'PDL',postalPrefix:'44'},
+      {name:'Bretagne',abbr:'BRE',postalPrefix:'35'},{name:'Normandie',abbr:'NOR',postalPrefix:'76'},
+      {name:'Bourgogne-Franche-Comté',abbr:'BFC',postalPrefix:'21'},{name:'Centre-Val de Loire',abbr:'CVL',postalPrefix:'45'},
+    ],
+    postalFormat: (r) => { const p=COUNTRY_LOCALES.FR.regions.find(s=>s.abbr===r); return (p?p.postalPrefix:randomPick(['75','69','33','31','59','13','67','44']))+randomDigits(3); },
+    phoneFormat: () => randomPick([`+33 ${randomInt(1,6)} ${randomDigits(2)} ${randomDigits(2)} ${randomDigits(2)} ${randomDigits(2)}`,`0${randomInt(1,6)} ${randomDigits(2)} ${randomDigits(2)} ${randomDigits(2)} ${randomDigits(2)}`]),
+    cities: ['Paris','Marseille','Lyon','Toulouse','Nice','Nantes','Strasbourg','Montpellier','Bordeaux','Lille','Rennes','Reims','Saint-Étienne','Le Havre','Toulon','Grenoble','Dijon','Angers','Nîmes','Villeurbanne','Clermont-Ferrand','Le Mans','Aix-en-Provence','Brest','Tours'],
+    streetSuffixes: ['Rue','Avenue','Boulevard','Chemin','Place','Passage','Impasse','Allée','Cours','Quai'],
+    addressFormat: 'eu',
+  },
+  JP: {
+    name: 'Japan', code: 'JP',
+    regions: [
+      {name:'Tokyo',abbr:'東京',postalPrefix:'100'},{name:'Osaka',abbr:'大阪',postalPrefix:'530'},
+      {name:'Kanagawa',abbr:'神奈川',postalPrefix:'220'},{name:'Aichi',abbr:'愛知',postalPrefix:'450'},
+      {name:'Saitama',abbr:'埼玉',postalPrefix:'330'},{name:'Chiba',abbr:'千葉',postalPrefix:'260'},
+      {name:'Hokkaido',abbr:'北海道',postalPrefix:'060'},{name:'Hyogo',abbr:'兵庫',postalPrefix:'650'},
+      {name:'Fukuoka',abbr:'福岡',postalPrefix:'810'},{name:'Kyoto',abbr:'京都',postalPrefix:'600'},
+      {name:'Shizuoka',abbr:'静岡',postalPrefix:'420'},{name:'Hiroshima',abbr:'広島',postalPrefix:'730'},
+    ],
+    postalFormat: (r) => { const p=COUNTRY_LOCALES.JP.regions.find(s=>s.abbr===r||s.name===r); const pre=p?p.postalPrefix:randomPick(['100','530','220','450']); return pre+'-'+randomDigits(4); },
+    phoneFormat: () => randomPick([`+81 ${randomInt(3,90)}-${randomDigits(4)}-${randomDigits(4)}`,`0${randomInt(3,90)}-${randomDigits(4)}-${randomDigits(4)}`]),
+    cities: ['Tokyo','Yokohama','Osaka','Nagoya','Sapporo','Fukuoka','Kobe','Kyoto','Kawasaki','Saitama','Hiroshima','Sendai','Kitakyushu','Chiba','Sakai','Niigata','Hamamatsu','Shizuoka','Okayama','Kumamoto','Kagoshima','Nara'],
+    streetSuffixes: ['丁目','番地','号'],
+    addressFormat: 'jp',
+  },
+  BR: {
+    name: 'Brazil', code: 'BR',
+    regions: [
+      {name:'São Paulo',abbr:'SP',postalPrefix:'01'},{name:'Rio de Janeiro',abbr:'RJ',postalPrefix:'20'},
+      {name:'Minas Gerais',abbr:'MG',postalPrefix:'30'},{name:'Bahia',abbr:'BA',postalPrefix:'40'},
+      {name:'Paraná',abbr:'PR',postalPrefix:'80'},{name:'Rio Grande do Sul',abbr:'RS',postalPrefix:'90'},
+      {name:'Pernambuco',abbr:'PE',postalPrefix:'50'},{name:'Ceará',abbr:'CE',postalPrefix:'60'},
+      {name:'Goiás',abbr:'GO',postalPrefix:'74'},{name:'Distrito Federal',abbr:'DF',postalPrefix:'70'},
+      {name:'Santa Catarina',abbr:'SC',postalPrefix:'88'},{name:'Amazonas',abbr:'AM',postalPrefix:'69'},
+    ],
+    postalFormat: (r) => { const p=COUNTRY_LOCALES.BR.regions.find(s=>s.abbr===r); return (p?p.postalPrefix:randomPick(['01','20','30','40','80','90']))+randomDigits(3)+'-'+randomDigits(3); },
+    phoneFormat: () => randomPick([`+55 ${randomInt(11,99)} ${randomDigits(4)}-${randomDigits(4)}`,`+55 ${randomInt(11,99)} 9${randomDigits(4)}-${randomDigits(4)}`]),
+    cities: ['São Paulo','Rio de Janeiro','Brasília','Salvador','Fortaleza','Belo Horizonte','Manaus','Curitiba','Recife','Goiânia','Belém','Porto Alegre','Guarulhos','Campinas','São Luís','Maceió','Campo Grande','Teresina','João Pessoa','Natal','Florianópolis','Santos','Vitória'],
+    streetSuffixes: ['Rua','Avenida','Travessa','Alameda','Praça','Largo','Estrada','Rodovia'],
+    addressFormat: 'br',
+  },
+  IN: {
+    name: 'India', code: 'IN',
+    regions: [
+      {name:'Maharashtra',abbr:'MH',postalPrefix:'400'},{name:'Delhi',abbr:'DL',postalPrefix:'110'},
+      {name:'Karnataka',abbr:'KA',postalPrefix:'560'},{name:'Tamil Nadu',abbr:'TN',postalPrefix:'600'},
+      {name:'Telangana',abbr:'TG',postalPrefix:'500'},{name:'Gujarat',abbr:'GJ',postalPrefix:'380'},
+      {name:'Uttar Pradesh',abbr:'UP',postalPrefix:'201'},{name:'West Bengal',abbr:'WB',postalPrefix:'700'},
+      {name:'Rajasthan',abbr:'RJ',postalPrefix:'302'},{name:'Kerala',abbr:'KL',postalPrefix:'682'},
+      {name:'Punjab',abbr:'PB',postalPrefix:'160'},{name:'Madhya Pradesh',abbr:'MP',postalPrefix:'462'},
+    ],
+    postalFormat: (r) => { const p=COUNTRY_LOCALES.IN.regions.find(s=>s.abbr===r); return (p?p.postalPrefix:randomPick(['400','110','560','600','500']))+randomDigits(3); },
+    phoneFormat: () => randomPick([`+91 ${randomInt(70,99)}${randomDigits(2)} ${randomDigits(3)} ${randomDigits(3)}`,`+91 ${randomInt(70,99)}${randomDigits(8)}`]),
+    cities: ['Mumbai','Delhi','Bangalore','Hyderabad','Ahmedabad','Chennai','Kolkata','Pune','Jaipur','Lucknow','Kanpur','Nagpur','Visakhapatnam','Indore','Thane','Bhopal','Patna','Vadodara','Surat','Coimbatore','Kochi','Chandigarh','Gurgaon','Noida'],
+    streetSuffixes: ['Road','Street','Marg','Nagar','Colony','Layout','Extension','Block','Sector','Lane','Circle','Path'],
+    addressFormat: 'us',
+  },
+  MX: {
+    name: 'Mexico', code: 'MX',
+    regions: [
+      {name:'Ciudad de México',abbr:'CDMX',postalPrefix:'06'},{name:'Jalisco',abbr:'JAL',postalPrefix:'44'},
+      {name:'Nuevo León',abbr:'NL',postalPrefix:'64'},{name:'Estado de México',abbr:'MEX',postalPrefix:'50'},
+      {name:'Puebla',abbr:'PUE',postalPrefix:'72'},{name:'Guanajuato',abbr:'GTO',postalPrefix:'36'},
+      {name:'Chihuahua',abbr:'CHH',postalPrefix:'31'},{name:'Veracruz',abbr:'VER',postalPrefix:'91'},
+      {name:'Querétaro',abbr:'QRO',postalPrefix:'76'},{name:'Yucatán',abbr:'YUC',postalPrefix:'97'},
+      {name:'Baja California',abbr:'BC',postalPrefix:'22'},{name:'Sonora',abbr:'SON',postalPrefix:'83'},
+    ],
+    postalFormat: (r) => { const p=COUNTRY_LOCALES.MX.regions.find(s=>s.abbr===r); return (p?p.postalPrefix:randomPick(['06','44','64','50','72']))+randomDigits(3); },
+    phoneFormat: () => randomPick([`+52 ${randomInt(55,99)} ${randomDigits(4)} ${randomDigits(4)}`,`+52 1 ${randomInt(55,99)} ${randomDigits(4)} ${randomDigits(4)}`]),
+    cities: ['Ciudad de México','Guadalajara','Monterrey','Puebla','Tijuana','León','Juárez','Zapopan','Mérida','San Luis Potosí','Aguascalientes','Hermosillo','Saltillo','Mexicali','Querétaro','Culiacán','Chihuahua','Morelia','Cancún','Veracruz','Acapulco','Oaxaca'],
+    streetSuffixes: ['Calle','Avenida','Boulevard','Calzada','Paseo','Camino','Privada','Circuito','Andador'],
+    addressFormat: 'eu',
+  },
+  IT: {
+    name: 'Italy', code: 'IT',
+    regions: [
+      {name:'Lombardia',abbr:'LOM',postalPrefix:'20'},{name:'Lazio',abbr:'LAZ',postalPrefix:'00'},
+      {name:'Campania',abbr:'CAM',postalPrefix:'80'},{name:'Veneto',abbr:'VEN',postalPrefix:'30'},
+      {name:'Emilia-Romagna',abbr:'EMR',postalPrefix:'40'},{name:'Piemonte',abbr:'PIE',postalPrefix:'10'},
+      {name:'Sicilia',abbr:'SIC',postalPrefix:'90'},{name:'Toscana',abbr:'TOS',postalPrefix:'50'},
+    ],
+    postalFormat: (r) => { const p=COUNTRY_LOCALES.IT.regions.find(s=>s.abbr===r); return (p?p.postalPrefix:randomPick(['20','00','80','50']))+randomDigits(3); },
+    phoneFormat: () => randomPick([`+39 0${randomInt(2,6)} ${randomDigits(4)} ${randomDigits(4)}`,`+39 3${randomDigits(2)} ${randomDigits(3)} ${randomDigits(4)}`]),
+    cities: ['Roma','Milano','Napoli','Torino','Palermo','Genova','Bologna','Firenze','Bari','Catania','Venezia','Verona','Padova','Trieste','Brescia','Parma','Modena','Perugia','Cagliari','Bergamo'],
+    streetSuffixes: ['Via','Viale','Corso','Piazza','Largo','Vicolo','Strada','Piazzale'],
+    addressFormat: 'eu',
+  },
+  ES: {
+    name: 'Spain', code: 'ES',
+    regions: [
+      {name:'Madrid',abbr:'MAD',postalPrefix:'28'},{name:'Cataluña',abbr:'CAT',postalPrefix:'08'},
+      {name:'Andalucía',abbr:'AND',postalPrefix:'41'},{name:'Comunidad Valenciana',abbr:'VAL',postalPrefix:'46'},
+      {name:'País Vasco',abbr:'PV',postalPrefix:'48'},{name:'Galicia',abbr:'GAL',postalPrefix:'15'},
+      {name:'Castilla y León',abbr:'CYL',postalPrefix:'47'},{name:'Canarias',abbr:'CAN',postalPrefix:'35'},
+    ],
+    postalFormat: (r) => { const p=COUNTRY_LOCALES.ES.regions.find(s=>s.abbr===r); return (p?p.postalPrefix:randomPick(['28','08','41','46']))+randomDigits(3); },
+    phoneFormat: () => randomPick([`+34 ${randomInt(6,7)}${randomDigits(2)} ${randomDigits(3)} ${randomDigits(3)}`,`+34 9${randomInt(1,9)} ${randomDigits(3)} ${randomDigits(2)} ${randomDigits(2)}`]),
+    cities: ['Madrid','Barcelona','Valencia','Sevilla','Zaragoza','Málaga','Murcia','Palma','Las Palmas','Bilbao','Alicante','Córdoba','Valladolid','Vigo','Gijón','Hospitalet','Vitoria-Gasteiz','Granada','A Coruña','Elche','Oviedo','Santander','San Sebastián'],
+    streetSuffixes: ['Calle','Avenida','Paseo','Plaza','Camino','Carrera','Travesía','Ronda','Vía'],
+    addressFormat: 'eu',
+  },
+  NL: {
+    name: 'Netherlands', code: 'NL',
+    regions: [
+      {name:'Noord-Holland',abbr:'NH',postalPrefix:'10'},{name:'Zuid-Holland',abbr:'ZH',postalPrefix:'25'},
+      {name:'Utrecht',abbr:'UT',postalPrefix:'35'},{name:'Noord-Brabant',abbr:'NB',postalPrefix:'50'},
+      {name:'Gelderland',abbr:'GE',postalPrefix:'68'},{name:'Limburg',abbr:'LI',postalPrefix:'62'},
+    ],
+    postalFormat: () => randomDigits(4)+' '+randomPick('ABCDEFGHJKLMNPRSTUVWXYZ'.split(''))+randomPick('ABCDEFGHJKLMNPRSTUVWXYZ'.split('')),
+    phoneFormat: () => randomPick([`+31 ${randomInt(10,70)} ${randomDigits(3)} ${randomDigits(4)}`,`+31 6 ${randomDigits(4)} ${randomDigits(4)}`]),
+    cities: ['Amsterdam','Rotterdam','Den Haag','Utrecht','Eindhoven','Groningen','Tilburg','Almere','Breda','Nijmegen','Apeldoorn','Haarlem','Arnhem','Enschede','Amersfoort','Zaanstad','Maastricht','Leiden','Dordrecht','Zoetermeer'],
+    streetSuffixes: ['straat','weg','laan','gracht','plein','kade','singel','steeg','dijk','pad'],
+    addressFormat: 'eu',
+  },
+  KR: {
+    name: 'South Korea', code: 'KR',
+    regions: [
+      {name:'Seoul',abbr:'서울',postalPrefix:'06'},{name:'Busan',abbr:'부산',postalPrefix:'48'},
+      {name:'Incheon',abbr:'인천',postalPrefix:'21'},{name:'Daegu',abbr:'대구',postalPrefix:'41'},
+      {name:'Daejeon',abbr:'대전',postalPrefix:'34'},{name:'Gwangju',abbr:'광주',postalPrefix:'61'},
+      {name:'Gyeonggi',abbr:'경기',postalPrefix:'10'},{name:'Jeju',abbr:'제주',postalPrefix:'63'},
+    ],
+    postalFormat: (r) => { const p=COUNTRY_LOCALES.KR.regions.find(s=>s.name===r||s.abbr===r); return (p?p.postalPrefix:randomPick(['06','48','21','10']))+randomDigits(3); },
+    phoneFormat: () => randomPick([`+82 ${randomInt(2,51)}-${randomDigits(4)}-${randomDigits(4)}`,`+82 10-${randomDigits(4)}-${randomDigits(4)}`]),
+    cities: ['Seoul','Busan','Incheon','Daegu','Daejeon','Gwangju','Ulsan','Suwon','Changwon','Goyang','Yongin','Seongnam','Cheongju','Bucheon','Ansan','Jeonju','Cheonan','Anyang','Gimhae','Pohang'],
+    streetSuffixes: ['로','길','대로','거리'],
+    addressFormat: 'eu',
+  },
+  SE: {
+    name: 'Sweden', code: 'SE',
+    regions: [
+      {name:'Stockholm',abbr:'AB',postalPrefix:'11'},{name:'Västra Götaland',abbr:'O',postalPrefix:'41'},
+      {name:'Skåne',abbr:'M',postalPrefix:'21'},{name:'Uppsala',abbr:'C',postalPrefix:'75'},
+      {name:'Östergötland',abbr:'E',postalPrefix:'58'},{name:'Norrbotten',abbr:'BD',postalPrefix:'97'},
+    ],
+    postalFormat: (r) => { const p=COUNTRY_LOCALES.SE.regions.find(s=>s.abbr===r); return (p?p.postalPrefix:randomPick(['11','41','21','75']))+randomDigits(1)+' '+randomDigits(2); },
+    phoneFormat: () => randomPick([`+46 ${randomInt(8,70)} ${randomDigits(3)} ${randomDigits(2)} ${randomDigits(2)}`,`0${randomInt(8,70)}-${randomDigits(3)} ${randomDigits(2)} ${randomDigits(2)}`]),
+    cities: ['Stockholm','Göteborg','Malmö','Uppsala','Linköping','Västerås','Örebro','Helsingborg','Norrköping','Jönköping','Umeå','Lund','Borås','Sundsvall','Gävle','Karlstad'],
+    streetSuffixes: ['gatan','vägen','stigen','torget','platsen','allén','backen','gränd','leden'],
+    addressFormat: 'eu',
+  },
+  CH: {
+    name: 'Switzerland', code: 'CH',
+    regions: [
+      {name:'Zürich',abbr:'ZH',postalPrefix:'80'},{name:'Bern',abbr:'BE',postalPrefix:'30'},
+      {name:'Genève',abbr:'GE',postalPrefix:'12'},{name:'Basel-Stadt',abbr:'BS',postalPrefix:'40'},
+      {name:'Vaud',abbr:'VD',postalPrefix:'10'},{name:'Luzern',abbr:'LU',postalPrefix:'60'},
+    ],
+    postalFormat: () => randomPick(['10','12','15','20','30','40','50','60','80','90'])+randomDigits(2),
+    phoneFormat: () => randomPick([`+41 ${randomInt(21,79)} ${randomDigits(3)} ${randomDigits(2)} ${randomDigits(2)}`]),
+    cities: ['Zürich','Genève','Basel','Lausanne','Bern','Winterthur','Luzern','St. Gallen','Lugano','Biel','Thun','Köniz','La Chaux-de-Fonds','Fribourg','Schaffhausen'],
+    streetSuffixes: ['Strasse','Weg','Gasse','Platz','Allee','Ring'],
+    addressFormat: 'eu',
+  },
+  NO: {
+    name: 'Norway', code: 'NO',
+    regions: [
+      {name:'Oslo',abbr:'OSL',postalPrefix:'0'},{name:'Bergen',abbr:'HOR',postalPrefix:'5'},
+      {name:'Trondheim',abbr:'TRD',postalPrefix:'7'},{name:'Stavanger',abbr:'ROG',postalPrefix:'4'},
+      {name:'Tromsø',abbr:'TRM',postalPrefix:'9'},
+    ],
+    postalFormat: () => randomDigits(4),
+    phoneFormat: () => randomPick([`+47 ${randomDigits(2)} ${randomDigits(2)} ${randomDigits(2)} ${randomDigits(2)}`,`+47 4${randomDigits(1)} ${randomDigits(2)} ${randomDigits(2)} ${randomDigits(2)}`]),
+    cities: ['Oslo','Bergen','Trondheim','Stavanger','Drammen','Fredrikstad','Kristiansand','Sandnes','Tromsø','Sarpsborg','Skien','Ålesund','Sandefjord','Haugesund','Tønsberg','Moss','Bodø'],
+    streetSuffixes: ['gata','veien','vegen','torget','plass','allé','bakken','stien','lia'],
+    addressFormat: 'eu',
+  },
+  SG: {
+    name: 'Singapore', code: 'SG',
+    regions: [
+      {name:'Central',abbr:'CEN',postalPrefix:'01'},{name:'East',abbr:'EAST',postalPrefix:'42'},
+      {name:'North',abbr:'NTH',postalPrefix:'72'},{name:'North-East',abbr:'NE',postalPrefix:'53'},
+      {name:'West',abbr:'WST',postalPrefix:'60'},
+    ],
+    postalFormat: () => randomDigits(6),
+    phoneFormat: () => randomPick([`+65 ${randomInt(6,9)}${randomDigits(3)} ${randomDigits(4)}`,`+65 8${randomDigits(3)} ${randomDigits(4)}`]),
+    cities: ['Singapore','Jurong East','Tampines','Woodlands','Ang Mo Kio','Bedok','Clementi','Toa Payoh','Hougang','Yishun','Bukit Batok','Choa Chu Kang','Sengkang','Punggol','Pasir Ris'],
+    streetSuffixes: ['Road','Street','Avenue','Drive','Lane','Way','Crescent','Boulevard','Place','Walk','Link','Close','Terrace'],
+    addressFormat: 'us',
+  },
+  NZ: {
+    name: 'New Zealand', code: 'NZ',
+    regions: [
+      {name:'Auckland',abbr:'AUK',postalPrefix:'10'},{name:'Wellington',abbr:'WGN',postalPrefix:'60'},
+      {name:'Canterbury',abbr:'CAN',postalPrefix:'80'},{name:'Otago',abbr:'OTA',postalPrefix:'90'},
+      {name:'Waikato',abbr:'WKO',postalPrefix:'32'},{name:'Bay of Plenty',abbr:'BOP',postalPrefix:'31'},
+    ],
+    postalFormat: () => randomDigits(4),
+    phoneFormat: () => randomPick([`+64 ${randomInt(3,9)} ${randomDigits(3)} ${randomDigits(4)}`,`+64 21 ${randomDigits(3)} ${randomDigits(4)}`]),
+    cities: ['Auckland','Wellington','Christchurch','Hamilton','Tauranga','Napier-Hastings','Dunedin','Palmerston North','Nelson','Rotorua','New Plymouth','Whangarei','Invercargill','Whanganui','Gisborne'],
+    streetSuffixes: ['Street','Road','Avenue','Drive','Place','Crescent','Way','Terrace','Lane','Close'],
+    addressFormat: 'us',
+  },
+  IE: {
+    name: 'Ireland', code: 'IE',
+    regions: [
+      {name:'Dublin',abbr:'D',postalPrefix:'D0'},{name:'Cork',abbr:'CO',postalPrefix:'T12'},
+      {name:'Galway',abbr:'G',postalPrefix:'H91'},{name:'Limerick',abbr:'LK',postalPrefix:'V94'},
+      {name:'Waterford',abbr:'WD',postalPrefix:'X91'},{name:'Kilkenny',abbr:'KK',postalPrefix:'R95'},
+    ],
+    postalFormat: () => randomPick(['D','T','H','V','X','R','A','F','N','P','E','K','W','Y'])+randomDigits(2)+' '+randomPick('ABCDEFGHJKLMNPRSTUVWXYZ'.split(''))+randomPick('ABCDEFGHJKLMNPRSTUVWXYZ'.split(''))+randomDigits(2),
+    phoneFormat: () => randomPick([`+353 ${randomInt(1,86)} ${randomDigits(3)} ${randomDigits(4)}`,`+353 8${randomInt(3,9)} ${randomDigits(3)} ${randomDigits(4)}`]),
+    cities: ['Dublin','Cork','Galway','Limerick','Waterford','Drogheda','Dundalk','Swords','Bray','Navan','Ennis','Killarney','Tralee','Kilkenny','Athlone','Sligo','Letterkenny','Wexford','Carlow','Clonmel'],
+    streetSuffixes: ['Street','Road','Avenue','Drive','Lane','Way','Close','Crescent','Park','Place','Terrace','Court','Green','Square'],
+    addressFormat: 'uk',
+  },
+};
+
+const EMAIL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','icloud.com','protonmail.com','mail.com','aol.com','live.com'];
 
 // ============== GENERATORS ==============
 
@@ -351,184 +455,112 @@ function generateFirstName(gender?: 'male' | 'female'): string {
   return Math.random() > 0.5 ? randomPick(MALE_FIRST_NAMES) : randomPick(FEMALE_FIRST_NAMES);
 }
 
-function generateLastName(): string {
-  return randomPick(LAST_NAMES);
-}
+function generateStreetAddress(locale: CountryLocale): string {
+  const num = randomInt(1, 9999).toString();
+  const name = Math.random() > 0.5 ? randomPick(MALE_FIRST_NAMES) : randomPick(LAST_NAMES);
+  const suffix = randomPick(locale.streetSuffixes);
 
-function generateStreetName(): string {
-  const name = Math.random() > 0.5 ? generateFirstName() : generateLastName();
-  return `${name} ${randomPick(STREET_SUFFIXES)}`;
-}
-
-function generateStreetAddress(): string {
-  const buildingNum = randomInt(1, 9999).toString();
-  return `${buildingNum} ${generateStreetName()}`;
-}
-
-function generateSecondaryAddress(): string {
-  return `${randomPick(SECONDARY_ADDRESS)}${randomInt(1, 999)}`;
-}
-
-function generateCityName(): string {
-  const pattern = randomInt(0, 3);
-  switch (pattern) {
-    case 0: return `${randomPick(CITY_PREFIXES)} ${generateFirstName()}${randomPick(CITY_SUFFIXES)}`;
-    case 1: return `${randomPick(CITY_PREFIXES)} ${generateFirstName()}`;
-    case 2: return `${generateFirstName()}${randomPick(CITY_SUFFIXES)}`;
-    default: return `${generateLastName()}${randomPick(CITY_SUFFIXES)}`;
+  switch (locale.addressFormat) {
+    case 'eu': return `${suffix} ${name} ${num}`;
+    case 'jp': return `${randomInt(1,30)}-${randomInt(1,20)}-${randomInt(1,15)}`;
+    case 'br': return `${suffix} ${name}, ${num}`;
+    default: return `${num} ${name} ${suffix}`;
   }
-}
-
-function generateZipCode(stateAbbr?: string): string {
-  if (stateAbbr) {
-    const state = US_STATES.find(s => s.abbr === stateAbbr);
-    if (state) return state.zipPrefix + randomDigits(2);
-  }
-  return randomDigits(5);
-}
-
-function generateState(): typeof US_STATES[0] {
-  return randomPick(US_STATES);
-}
-
-function generatePhoneNumber(): string {
-  const areaCode = randomPick(PHONE_AREA_CODES);
-  const exchange = randomDigits(3);
-  const subscriber = randomDigits(4);
-  const formats = [
-    `(${areaCode}) ${exchange}-${subscriber}`,
-    `${areaCode}-${exchange}-${subscriber}`,
-    `${areaCode}.${exchange}.${subscriber}`,
-    `+1 ${areaCode} ${exchange} ${subscriber}`,
-  ];
-  return randomPick(formats);
 }
 
 function generateEmail(firstName: string, lastName: string): string {
   const fn = firstName.toLowerCase().replace(/[^a-z]/g, '');
   const ln = lastName.toLowerCase().replace(/[^a-z]/g, '');
-  const patterns = [
-    `${fn}.${ln}`,
-    `${fn}${ln}`,
-    `${fn}.${ln}${randomInt(1, 99)}`,
-    `${fn[0]}${ln}`,
-    `${fn}_${ln}`,
-    `${fn}${randomInt(100, 999)}`,
-  ];
+  const patterns = [`${fn}.${ln}`,`${fn}${ln}`,`${fn}.${ln}${randomInt(1,99)}`,`${fn[0]}${ln}`,`${fn}_${ln}`];
   return `${randomPick(patterns)}@${randomPick(EMAIL_DOMAINS)}`;
 }
 
-function generateSSNLast4(): string {
-  return randomDigits(4);
-}
-
-function generateDOB(minAge: number = 18, maxAge: number = 80): string {
-  const now = new Date();
-  const year = now.getFullYear() - randomInt(minAge, maxAge);
-  const month = randomInt(1, 12);
-  const day = randomInt(1, 28);
-  return `${String(month).padStart(2, '0')}/${String(day).padStart(2, '0')}/${year}`;
-}
-
-// ============== MAIN EXPORT ==============
+// ============== EXPORTS ==============
 
 export interface AddressData {
-  firstName: string;
-  lastName: string;
-  fullName: string;
-  streetAddress: string;
-  secondaryAddress: string;
-  city: string;
-  state: string;
-  stateAbbr: string;
-  zipCode: string;
-  country: string;
-  countryCode: string;
-  phone: string;
-  email: string;
-  ssnLast4: string;
-  dob: string;
+  firstName: string; lastName: string; fullName: string;
+  streetAddress: string; secondaryAddress: string;
+  city: string; state: string; stateAbbr: string;
+  zipCode: string; country: string; countryCode: string;
+  phone: string; email: string; ssnLast4: string; dob: string;
   fullAddress: string;
 }
 
 export interface GenerateAddressParams {
-  quantity: number;
-  country?: string;
-  stateAbbr?: string;
+  quantity: number; country?: string; stateAbbr?: string;
   gender?: 'male' | 'female' | 'random';
-  includePhone?: boolean;
-  includeEmail?: boolean;
-  includeSSN?: boolean;
-  includeDOB?: boolean;
+  includePhone?: boolean; includeEmail?: boolean;
+  includeSSN?: boolean; includeDOB?: boolean;
 }
 
 export function generateAddresses(params: GenerateAddressParams): AddressData[] {
-  const {
-    quantity = 1,
-    country = 'US',
-    stateAbbr,
-    gender = 'random',
-    includePhone = true,
-    includeEmail = true,
-    includeSSN = true,
-    includeDOB = true,
-  } = params;
-
+  const { quantity=1, country='US', stateAbbr, gender='random', includePhone=true, includeEmail=true, includeSSN=true, includeDOB=true } = params;
+  const locale = COUNTRY_LOCALES[country] || COUNTRY_LOCALES.US;
   const addresses: AddressData[] = [];
 
   for (let i = 0; i < quantity; i++) {
     const g = gender === 'random' ? undefined : gender;
     const firstName = generateFirstName(g);
-    const lastName = generateLastName();
+    const lastName = randomPick(LAST_NAMES);
     const fullName = `${firstName} ${lastName}`;
 
-    let state: typeof US_STATES[0];
+    let region;
     if (stateAbbr) {
-      state = US_STATES.find(s => s.abbr === stateAbbr) || generateState();
+      region = locale.regions.find(s => s.abbr === stateAbbr) || randomPick(locale.regions);
     } else {
-      state = generateState();
+      region = randomPick(locale.regions);
     }
 
-    const streetAddress = generateStreetAddress();
-    const secondaryAddr = Math.random() > 0.6 ? generateSecondaryAddress() : '';
-    const city = generateCityName();
-    const zipCode = generateZipCode(state.abbr);
+    const streetAddress = generateStreetAddress(locale);
+    const secondaryAddr = Math.random() > 0.7 ? `Apt. ${randomInt(1, 999)}` : '';
+    const city = randomPick(locale.cities);
+    const zipCode = locale.postalFormat(region.abbr);
 
-    const countryInfo = COUNTRIES.find(c => c.code === country) || COUNTRIES[0];
+    let fullAddress: string;
+    switch (locale.addressFormat) {
+      case 'eu':
+        fullAddress = `${streetAddress}, ${zipCode} ${city}, ${region.name}`;
+        break;
+      case 'uk':
+        fullAddress = `${streetAddress}, ${city}, ${region.name}, ${zipCode}`;
+        break;
+      case 'jp':
+        fullAddress = `${zipCode} ${region.name} ${city} ${streetAddress}`;
+        break;
+      case 'br':
+        fullAddress = `${streetAddress} - ${city}, ${region.abbr}, ${zipCode}`;
+        break;
+      default:
+        fullAddress = secondaryAddr
+          ? `${secondaryAddr} ${streetAddress}, ${city}, ${region.abbr} ${zipCode}`
+          : `${streetAddress}, ${city}, ${region.abbr} ${zipCode}`;
+    }
 
-    const fullAddress = secondaryAddr
-      ? `${secondaryAddr} ${streetAddress}, ${city}, ${state.abbr} ${zipCode}`
-      : `${streetAddress}, ${city}, ${state.abbr} ${zipCode}`;
+    let dob = '';
+    if (includeDOB) {
+      const y = new Date().getFullYear() - randomInt(18, 80);
+      dob = `${String(randomInt(1,12)).padStart(2,'0')}/${String(randomInt(1,28)).padStart(2,'0')}/${y}`;
+    }
 
     addresses.push({
-      firstName,
-      lastName,
-      fullName,
-      streetAddress,
-      secondaryAddress: secondaryAddr,
-      city,
-      state: state.name,
-      stateAbbr: state.abbr,
-      zipCode,
-      country: countryInfo.name,
-      countryCode: countryInfo.code,
-      phone: includePhone ? generatePhoneNumber() : '',
+      firstName, lastName, fullName, streetAddress,
+      secondaryAddress: secondaryAddr, city,
+      state: region.name, stateAbbr: region.abbr, zipCode,
+      country: locale.name, countryCode: locale.code,
+      phone: includePhone ? locale.phoneFormat() : '',
       email: includeEmail ? generateEmail(firstName, lastName) : '',
-      ssnLast4: includeSSN ? generateSSNLast4() : '',
-      dob: includeDOB ? generateDOB() : '',
-      fullAddress,
+      ssnLast4: includeSSN ? randomDigits(4) : '',
+      dob, fullAddress,
     });
   }
-
   return addresses;
 }
 
-export function getAvailableStates() {
-  return US_STATES.map(s => ({ name: s.name, abbr: s.abbr }));
+export function getAvailableStates(countryCode: string = 'US') {
+  const locale = COUNTRY_LOCALES[countryCode] || COUNTRY_LOCALES.US;
+  return locale.regions.map(s => ({ name: s.name, abbr: s.abbr }));
 }
 
 export function getAvailableCountries() {
-  return COUNTRIES;
+  return Object.values(COUNTRY_LOCALES).map(l => ({ name: l.name, code: l.code }));
 }
-
-export type { };

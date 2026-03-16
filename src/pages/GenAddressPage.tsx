@@ -18,7 +18,7 @@ export default function GenAddressPage() {
   const [toast, setToast] = useState<string | null>(null);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
-  const states = getAvailableStates();
+  const states = getAvailableStates(selectedCountry);
   const countries = getAvailableCountries();
 
   const showToast = (msg: string) => {
@@ -100,7 +100,7 @@ export default function GenAddressPage() {
           </div>
           <div>
             <h2 className="panel-title">Generate Fake Address</h2>
-            <p className="panel-subtitle">Realistic US address data for testing</p>
+            <p className="panel-subtitle">Realistic address data for testing — {countries.length} countries</p>
           </div>
         </div>
 
@@ -111,7 +111,7 @@ export default function GenAddressPage() {
             <select
               className="form-select"
               value={selectedCountry}
-              onChange={e => setSelectedCountry(e.target.value)}
+              onChange={e => { setSelectedCountry(e.target.value); setSelectedState(''); }}
             >
               {countries.map(c => (
                 <option key={c.code} value={c.code}>{c.name}</option>
