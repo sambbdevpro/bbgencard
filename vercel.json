@@ -9,6 +9,7 @@
     { "source": "/api/networks", "destination": "/api/networks" },
     { "source": "/api/health", "destination": "/api/health" },
     { "source": "/api/notify", "destination": "/api/notify" },
+    { "source": "/api/address", "destination": "/api/address" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

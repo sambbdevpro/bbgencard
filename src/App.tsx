@@ -1,48 +1,60 @@
-import { useState, useEffect } from 'react';
-import { CreditCard, Settings, Wrench, AlertTriangle, CheckCircle, Code } from 'lucide-react';
-import BasicMode from './components/BasicMode';
-import AdvancedMode from './components/AdvancedMode';
-import ToolsMode from './components/ToolsMode';
-import ApiDocsMode from './components/ApiDocsMode';
-import ResultPanel from './components/ResultPanel';
-import type { CardData } from './lib/cardGenerator';
+import { useState } from 'react';
+import { CreditCard, MapPin, Package, LayoutDashboard, ChevronLeft, ChevronRight, Zap, Clock } from 'lucide-react';
+import GenCardPage from './pages/GenCardPage';
+import GenAddressPage from './pages/GenAddressPage';
 import './index.css';
 
-type Tab = 'basic' | 'advanced' | 'tools' | 'api';
+type MenuPage = 'gencard' | 'genaddress' | 'coming1' | 'coming2';
+
+interface MenuItem {
+  id: MenuPage;
+  label: string;
+  icon: React.ReactNode;
+  available: boolean;
+  description: string;
+  gradient: string;
+}
+
+const MENU_ITEMS: MenuItem[] = [
+  {
+    id: 'gencard',
+    label: 'GenCard',
+    icon: <CreditCard size={20} />,
+    available: true,
+    description: 'Test Card Generator',
+    gradient: 'linear-gradient(135deg, #6c5ce7, #a29bfe)',
+  },
+  {
+    id: 'genaddress',
+    label: 'GenAddress',
+    icon: <MapPin size={20} />,
+    available: true,
+    description: 'Fake Address Generator',
+    gradient: 'linear-gradient(135deg, #00cec9, #55efc4)',
+  },
+  {
+    id: 'coming1',
+    label: 'GenIdentity',
+    icon: <Package size={20} />,
+    available: false,
+    description: 'Coming Soon',
+    gradient: 'linear-gradient(135deg, #fd79a8, #e84393)',
+  },
+  {
+    id: 'coming2',
+    label: 'GenPayment',
+    icon: <Zap size={20} />,
+    available: false,
+    description: 'Coming Soon',
+    gradient: 'linear-gradient(135deg, #fdcb6e, #f39c12)',
+  },
+];
 
 function App() {
-  const [activeTab, setActiveTab] = useState<Tab>('basic');
-  const [cards, setCards] = useState<CardData[]>([]);
-  const [toast, setToast] = useState<string | null>(null);
+  const [activePage, setActivePage] = useState<MenuPage>('gencard');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
-  const showToast = (msg: string) => {
-    setToast(msg);
-    setTimeout(() => setToast(null), 2500);
-  };
-
-  const handleCardsGenerated = (newCards: CardData[]) => {
-    setCards(newCards);
-  };
-
-  const handleClear = () => {
-    setCards([]);
-  };
-
-  // Keyboard shortcut: Ctrl+G to generate
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.key === 'g') {
-        e.preventDefault();
-        // trigger click on generate button
-        const btn = document.querySelector('.btn-primary.btn-full') as HTMLButtonElement;
-        btn?.click();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  const showResults = activeTab === 'basic' || activeTab === 'advanced';
+  const activeItem = MENU_ITEMS.find(m => m.id === activePage)!;
 
   return (
     <div className="app-container">
@@ -53,92 +65,103 @@ function App() {
         <div className="bg-orb bg-orb-3" />
       </div>
 
-      <div className="app-content">
-        {/* Header */}
-        <header className="app-header">
-          <div className="app-logo">
-            <div className="logo-icon">
-              <CreditCard size={28} />
+      <div className="app-shell">
+        {/* Sidebar */}
+        <aside className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
+          <div className="sidebar-header">
+            <div className="sidebar-logo">
+              <div className="sidebar-logo-icon">
+                <LayoutDashboard size={22} />
+              </div>
+              {!sidebarCollapsed && (
+                <div className="sidebar-logo-text">
+                  <span className="sidebar-brand">BBTools</span>
+                  <span className="sidebar-version">v2.0</span>
+                </div>
+              )}
             </div>
-            <h1 className="app-title">BBGenCard</h1>
+            <button
+              className="sidebar-toggle"
+              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+              title={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            >
+              {sidebarCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+            </button>
           </div>
-          <p className="app-subtitle">
-            High-Performance Test Card Number Generator — For Development & Testing Only
-          </p>
-        </header>
 
-        {/* Disclaimer */}
-        <div className="disclaimer-bar">
-          <AlertTriangle />
-          <span>
-            <strong>Disclaimer:</strong> Generated card numbers are for software testing purposes only.
-            They are based on the Luhn algorithm and do not correspond to real bank accounts.
-          </span>
-        </div>
+          <nav className="sidebar-nav">
+            <div className="sidebar-nav-label">
+              {!sidebarCollapsed && 'GENERATORS'}
+            </div>
+            {MENU_ITEMS.map(item => (
+              <button
+                key={item.id}
+                className={`sidebar-item ${activePage === item.id ? 'active' : ''} ${!item.available ? 'disabled' : ''}`}
+                onClick={() => item.available && setActivePage(item.id)}
+                title={sidebarCollapsed ? `${item.label} — ${item.description}` : ''}
+              >
+                <div className="sidebar-item-icon" style={{ background: item.gradient }}>
+                  {item.icon}
+                </div>
+                {!sidebarCollapsed && (
+                  <div className="sidebar-item-text">
+                    <span className="sidebar-item-label">{item.label}</span>
+                    <span className="sidebar-item-desc">
+                      {item.available ? item.description : (
+                        <span className="coming-soon-tag"><Clock size={10} /> Coming Soon</span>
+                      )}
+                    </span>
+                  </div>
+                )}
+                {!sidebarCollapsed && activePage === item.id && (
+                  <div className="sidebar-active-indicator" />
+                )}
+              </button>
+            ))}
+          </nav>
 
-        {/* Navigation Tabs */}
-        <nav className="nav-tabs">
-          <button
-            className={`nav-tab ${activeTab === 'basic' ? 'active' : ''}`}
-            onClick={() => setActiveTab('basic')}
-          >
-            <CreditCard /> Basic
-          </button>
-          <button
-            className={`nav-tab ${activeTab === 'advanced' ? 'active' : ''}`}
-            onClick={() => setActiveTab('advanced')}
-          >
-            <Settings /> Advanced
-          </button>
-          <button
-            className={`nav-tab ${activeTab === 'tools' ? 'active' : ''}`}
-            onClick={() => setActiveTab('tools')}
-          >
-            <Wrench /> Tools
-          </button>
-          <button
-            className={`nav-tab ${activeTab === 'api' ? 'active' : ''}`}
-            onClick={() => setActiveTab('api')}
-          >
-            <Code /> API
-          </button>
-        </nav>
+          {!sidebarCollapsed && (
+            <div className="sidebar-footer">
+              <div className="sidebar-footer-text">
+                Powered by React + Vite
+                <br />
+                <span className="sidebar-footer-link">For Testing Only 🔒</span>
+              </div>
+            </div>
+          )}
+        </aside>
 
         {/* Main Content */}
-        <div className={`main-layout ${!showResults ? 'full-width' : ''}`}>
-          <div className="glass-panel">
-            {activeTab === 'basic' && (
-              <BasicMode onCardsGenerated={handleCardsGenerated} />
+        <main className="main-content">
+          {/* Page Header */}
+          <header className="page-header">
+            <div className="page-header-info">
+              <div className="page-header-icon" style={{ background: activeItem.gradient }}>
+                {activeItem.icon}
+              </div>
+              <div>
+                <h1 className="page-title">{activeItem.label}</h1>
+                <p className="page-subtitle">{activeItem.description}</p>
+              </div>
+            </div>
+          </header>
+
+          {/* Page Content */}
+          <div className="page-content">
+            {activePage === 'gencard' && <GenCardPage />}
+            {activePage === 'genaddress' && <GenAddressPage />}
+            {(activePage === 'coming1' || activePage === 'coming2') && (
+              <div className="coming-soon-page glass-panel">
+                <div className="coming-soon-icon" style={{ background: activeItem.gradient }}>
+                  {activeItem.icon}
+                </div>
+                <h2>{activeItem.label}</h2>
+                <p>This feature is currently under development and will be available soon.</p>
+              </div>
             )}
-            {activeTab === 'advanced' && (
-              <AdvancedMode onCardsGenerated={handleCardsGenerated} />
-            )}
-            {activeTab === 'tools' && <ToolsMode />}
-            {activeTab === 'api' && <ApiDocsMode />}
           </div>
-
-          {showResults && (
-            <ResultPanel
-              cards={cards}
-              onClear={handleClear}
-              onToast={showToast}
-            />
-          )}
-        </div>
-
-        {/* Footer */}
-        <footer className="app-footer">
-          © {new Date().getFullYear()} BBGenCard | Powered by React + Vite | For Testing Only 🔒
-        </footer>
+        </main>
       </div>
-
-      {/* Toast */}
-      {toast && (
-        <div className="toast">
-          <CheckCircle size={16} />
-          {toast}
-        </div>
-      )}
     </div>
   );
 }

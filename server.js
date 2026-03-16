@@ -382,12 +382,18 @@ app.get('/api/logs', (req, res) => {
   });
 });
 
+// ============== Address Generation API ==============
+import addressHandler from './api/address.js';
+
+app.get('/api/address', (req, res) => addressHandler(req, res));
+app.post('/api/address', (req, res) => addressHandler(req, res));
+
 // API docs
 app.get('/api', (req, res) => {
   res.json({
-    service: 'BBGenCard API',
-    version: '1.1.0',
-    features: ['Telegram notification on BIN gen', 'Auto-clear logs daily at 23:55'],
+    service: 'BBTools API',
+    version: '2.0.0',
+    features: ['GenCard', 'GenAddress', 'Telegram notification on BIN gen', 'Auto-clear logs daily at 23:55'],
     endpoints: {
       'GET /api/health': 'Health check',
       'GET /api/generate': 'Generate cards (query params: bin, exp, quantity, cvv, network)',
@@ -395,23 +401,28 @@ app.get('/api', (req, res) => {
       'GET /api/generate/pipe': 'Generate cards - plain text pipe format',
       'GET /api/validate?number=': 'Validate a card number',
       'GET /api/networks': 'List available card networks',
+      'GET /api/address': 'Generate fake addresses (query params: quantity, country, state, gender)',
+      'POST /api/address': 'Generate fake addresses (JSON body)',
       'GET /api/logs': 'View recent generation logs',
     },
     examples: {
       'Generate with BIN': '/api/generate?bin=559888&quantity=5',
       'Generate with BIN + EXP': '/api/generate?bin=453201&exp=05/28&quantity=10',
       'Pipe format': '/api/generate/pipe?bin=453201&exp=12/27&quantity=5',
+      'Generate addresses': '/api/address?quantity=5&state=CA',
+      'Generate addresses (country)': '/api/address?quantity=10&country=US&gender=female',
     },
   });
 });
 
 // ============== Start ==============
 app.listen(PORT, () => {
-  console.log(`\n🚀 BBGenCard API Server v1.1.0 running on http://localhost:${PORT}`);
+  console.log(`\n🚀 BBTools API Server v2.0.0 running on http://localhost:${PORT}`);
   console.log(`📖 API Docs: http://localhost:${PORT}/api`);
   console.log(`📨 Telegram notifications: ENABLED`);
-  console.log(`\nExample:`);
+  console.log(`\nEndpoints:`);
   console.log(`  GET http://localhost:${PORT}/api/generate?bin=559888&exp=05/28&quantity=5`);
+  console.log(`  GET http://localhost:${PORT}/api/address?quantity=5&state=CA`);
   console.log('');
 
   // Schedule auto-clear
