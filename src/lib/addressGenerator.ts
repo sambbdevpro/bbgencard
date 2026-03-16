@@ -355,10 +355,6 @@ function generateLastName(): string {
   return randomPick(LAST_NAMES);
 }
 
-function generateFullName(gender?: 'male' | 'female'): string {
-  return `${generateFirstName(gender)} ${generateLastName()}`;
-}
-
 function generateStreetName(): string {
   const name = Math.random() > 0.5 ? generateFirstName() : generateLastName();
   return `${name} ${randomPick(STREET_SUFFIXES)}`;
